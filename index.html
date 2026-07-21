@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leesflitser · technisch lezen</title>
+<style>
+  *{margin:0; padding:0; box-sizing:border-box;}
+  :root{
+    --ink:#24313d; --muted:#65717e; --groen:#3a9d7b; --paars:#8d6be8;
+    --rand:rgba(141,107,232,.18); --rand-sterk:rgba(141,107,232,.28);
+    --kaart:rgba(255,255,255,.80); --schaduw:0 18px 40px rgba(85,68,121,.10);
+    --radius:20px;
+  }
+  body{
+    font-family:-apple-system,system-ui,"SF Pro Display","Segoe UI",Inter,ui-sans-serif,sans-serif;
+    color:var(--ink); min-height:100vh;
+    background:
+      radial-gradient(circle at 12% 8%, rgba(174,233,209,.55), transparent 480px),
+      radial-gradient(circle at 88% 10%, rgba(205,184,255,.6), transparent 520px),
+      radial-gradient(circle at 50% 108%, rgba(174,233,209,.30), transparent 520px),
+      #eef1f6;
+    background-attachment:fixed;
+  }
+  .app{max-width:1000px; margin:0 auto; padding:26px 18px 48px;}
+
+  .eyebrow{color:var(--groen); font-weight:800; text-transform:uppercase;
+    letter-spacing:1px; font-size:12.5px;}
+  h1{font-size:clamp(30px,5vw,46px); font-weight:800; line-height:1.05; margin:6px 0 4px;}
+  .lead{color:var(--muted); font-size:16px; max-width:640px;}
+
+  .kaart{background:var(--kaart); border:1px solid var(--rand); border-radius:var(--radius);
+    box-shadow:var(--schaduw); backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);}
+
+  .balk{margin-top:18px; padding:16px 18px; display:flex; flex-wrap:wrap;
+    gap:14px 20px; align-items:center;}
+  .veld{display:flex; flex-direction:column; gap:5px;}
+  .veld label,.tempolabel{font-size:12px; color:var(--muted); font-weight:800;
+    text-transform:uppercase; letter-spacing:.5px;}
+  select{padding:11px 14px; border:1px solid var(--rand-sterk); border-radius:14px;
+    background:rgba(255,255,255,.92); font-family:inherit; font-size:15px; font-weight:600;
+    color:var(--ink); min-width:230px; cursor:pointer;}
+  input[type=range]{accent-color:var(--paars); width:170px;}
+  .tempoval{color:var(--paars); font-weight:900;}
+
+  .chip{border:1px solid var(--rand-sterk); background:rgba(255,255,255,.82);
+    color:var(--ink); font-family:inherit; font-weight:900; font-size:14px;
+    padding:11px 16px; border-radius:14px; cursor:pointer; transition:transform .07s ease;
+    display:inline-flex; align-items:center; gap:8px;}
+  .chip:hover{transform:translateY(-1px);}
+  .chip.aan{background:var(--paars); color:#fff; border-color:transparent;}
+  .chip .bol{width:16px; height:16px; border-radius:50%; border:2px solid currentColor; opacity:.6;}
+  .chip.aan .bol{background:#fff; border-color:#fff; opacity:1;}
+
+  .flits{margin-top:16px; min-height:48vh; display:flex; align-items:center;
+    justify-content:center; position:relative; cursor:pointer; user-select:none;
+    overflow:hidden; padding:24px; border:1px solid var(--rand);}
+  .woord{font-size:clamp(52px,15vw,200px); font-weight:800; letter-spacing:1px;
+    text-align:center; line-height:1.02; color:var(--ink); transition:opacity .08s;}
+  .voortgang{position:absolute; top:14px; right:20px; font-size:15px; color:#9aa4b0; font-weight:800;}
+  .hint{position:absolute; bottom:14px; left:0; right:0; text-align:center;
+    font-size:13px; color:#aab2ba;}
+  .flits:fullscreen{border-radius:0; background:#fff;}
+  .flits:fullscreen .woord{font-size:22vw;}
+
+  .knoppen{display:flex; flex-wrap:wrap; gap:10px; margin-top:16px;}
+  button.btn{font-family:inherit; font-size:16px; font-weight:900; border:1px solid var(--rand-sterk);
+    cursor:pointer; padding:13px 20px; border-radius:16px; background:rgba(255,255,255,.85);
+    color:var(--ink); transition:transform .07s ease;}
+  button.btn:hover{transform:translateY(-2px);}
+  button.btn.primair{background:var(--paars); color:#fff; border-color:transparent;
+    font-size:19px; padding:15px 30px;}
+
+  .eigen{display:none; margin-top:14px; padding:16px 18px;}
+  .eigen.aan{display:block;}
+  .eigen p{font-size:13px; color:var(--muted); margin-bottom:8px;}
+  textarea{width:100%; height:110px; font-family:inherit; font-size:14px; padding:10px;
+    border:1px solid var(--rand-sterk); border-radius:14px; resize:vertical;
+    background:rgba(255,255,255,.92); color:var(--ink);}
+
+  /* Printbare leeskaart */
+  .kaartprint{display:none;}
+  @media print{
+    body{background:#fff;}
+    .app{display:none;}
+    .kaartprint{display:block; padding:14mm 12mm; color:#1f2c34;}
+    .kaartprint h2{font-size:26px; text-align:center;}
+    .kaartprint .instr{text-align:center; color:#555; font-size:14px; margin:4px 0 12px;}
+    .kaartprint .rooster{display:grid; grid-template-columns:repeat(4,1fr); gap:2px 10px;}
+    .kaartprint .w{font-size:20px; padding:5px 4px; border-bottom:1px dotted #bbb;}
+    @page{size:A4 portrait; margin:12mm;}
+  }
+</style>
+</head>
+<body>
+<div class="app">
+  <header>
+    <div class="eyebrow">Technisch lezen</div>
+    <h1>Leesflitser</h1>
+    <div class="lead">Flits woorden op jouw niveau, groep 4 t/m 8. Klassikaal op het digibord of zelf op de tablet, met leeskaarten om te printen.</div>
+  </header>
+
+  <div class="kaart balk">
+    <div class="veld">
+      <label for="lijst">Woordenlijst</label>
+      <select id="lijst"></select>
+    </div>
+    <button class="chip aan" id="auto"><span class="bol"></span> Automatisch flitsen</button>
+    <div class="veld" id="tempoveld">
+      <span class="tempolabel">Tempo: <span class="tempoval" id="tempoval">3,0 sec</span></span>
+      <input type="range" id="tempo" min="0.5" max="6" step="0.5" value="3">
+    </div>
+    <button class="chip aan" id="hussel"><span class="bol"></span> Door elkaar</button>
+  </div>
+
+  <div class="kaart flits" id="flits">
+    <span class="voortgang" id="voortgang"></span>
+    <span class="woord" id="woord">Klaar?</span>
+    <span class="hint" id="hint">Klik hier of druk op spatie</span>
+  </div>
+
+  <div class="knoppen">
+    <button class="btn primair" id="startKnop">▶ Start</button>
+    <button class="btn" id="vorigeKnop">◀ Vorige</button>
+    <button class="btn" id="volgendeKnop">Volgende ▶</button>
+    <button class="btn" id="grootKnop">⤢ Groot scherm</button>
+    <button class="btn" id="printKnop">🖨 Print leeskaart</button>
+    <button class="btn" id="eigenKnop">✏️ Eigen woorden</button>
+  </div>
+
+  <div class="kaart eigen" id="eigenvak">
+    <p>Plak of typ je eigen woorden (spatie, komma of nieuwe regel ertussen). Klik daarna op "Gebruik deze woorden".</p>
+    <textarea id="eigeninvoer" placeholder="maan  roos  vis  tak  zon ..."></textarea>
+    <div style="margin-top:10px;">
+      <button class="btn primair" id="eigentoepassen">Gebruik deze woorden</button>
+    </div>
+  </div>
+</div>
+
+<div class="kaartprint" id="kaartprint"></div>
+
+<script>
+const NIVEAUS = {
+  "AVI M4 · groep 4": ["maan","roos","vis","tak","zon","huis","boot","kaas","weg","bal","pot","kip","bos","dak","mes","tas","pen","bel","kar","zak","net","bad","muur","tuin"],
+  "AVI E4 · groep 4": ["storm","plank","sport","klok","trap","kruk","slak","vlieg","brood","stoel","schaar","sprong","kast","wolk","veld","hand","kerk","worst","markt","herfst","twaalf","sterk","knots","spin"],
+  "AVI M5 · groep 5": ["bakker","tafel","water","appel","bezem","molen","jager","koning","vogel","regen","bloemen","straten","dieren","mensen","keuken","kamer","raket","ballon","kanon","tijger","slager","zomer","winter","school"],
+  "AVI E5 · groep 5": ["slang","bank","jongen","drinken","konijn","trein","fijn","wijzer","keizer","ijsje","eiland","zeilboot","bakkerij","schilderij","woning","ketting","springen","klimmen","tekening","opening","wandeling","honing","paling","spelling"],
+  "AVI M6 · groep 6": ["kabouter","augustus","chocola","machine","lachen","kachel","koud","vrouw","saus","blauw","gauw","verhaal","verkeer","gordijn","fontein","muzikant","olifant","familie","vakantie","bibliotheek","computer","tijdschrift","avontuur","paraplu"],
+  "AVI E6 · groep 6": ["gezellig","moeilijk","vriendelijk","eindelijk","plotseling","natuurlijk","verjaardag","voetbalclub","boterham","ziekenhuis","brandweerman","politieauto","verkeerslicht","aardbeving","schoolplein","huiswerk","luidspreker","tandenborstel","verrekijker","gereedschap","achtergrond","boodschappen","wereldbol","zwembad"],
+  "AVI M7 · groep 7": ["politie","vakantie","informatie","station","portie","traktatie","seconde","kilometer","temperatuur","elektriciteit","museum","stadion","cadeau","niveau","restaurant","chauffeur","journaal","garage","etage","bagage","energie","batterij","horloge","minuut"],
+  "AVI E7 · groep 7": ["fantastisch","logisch","magisch","technisch","historisch","tropisch","komisch","publiek","muziek","techniek","fabriek","antiek","uniek","sympathiek","allergisch","elektrisch","praktisch","automatisch","dramatisch","energiek","chirurg","quiz","chaos","cadeautje"],
+  "AVI Plus · groep 8": ["wetenschapper","gereedschapskist","verantwoordelijkheid","gebruiksaanwijzing","tegenovergestelde","achtereenvolgens","onafscheidelijk","vanzelfsprekend","buitengewoon","onvoorstelbaar","waarschijnlijk","oorspronkelijk","geschiedenis","aardrijkskunde","vermenigvuldigen","kampioenschap","atletiekvereniging","computerprogramma","universiteit","correspondentie","enthousiasme","catastrofe","temperatuurmeter","nieuwsgierigheid"]
+};
+const CATEGORIEEN = {
+  "Medeklinkerclusters": ["schroef","schrijven","sprong","spreeuw","straat","strand","sterk","markt","herfst","korst","borst","kracht","vlucht","nacht","zacht","licht","plicht","vrucht","splinter","sprinkhaan","structuur","schrapen","stronk","gedrag"],
+  "ei / ij": ["trein","fijn","wijn","reis","keizer","ijs","rijst","blijven","schrijven","tijd","wijzer","eiland","klein","zijde","feit","dweil","konijn","gordijn","festijn","azijn","kwijt","spijker","dijk","krijt"],
+  "au / ou": ["koud","oud","hout","zout","fout","goud","vrouw","mouw","touw","jou","saus","pauw","dauw","gauw","blauw","flauw","kabouter","augustus","applaus","restaurant","chauffeur","auto","paus","rauw"],
+  "Leenwoorden": ["computer","restaurant","cadeau","niveau","chauffeur","garage","etage","journaal","seconde","energie","batterij","tropisch","technisch","muziek","fabriek","antiek","quiz","museum","stadion","horloge","bagage","procent","kilometer","allergie"],
+  "Hoogfrequente woorden": ["de","het","een","ik","je","dat","die","niet","met","voor","maar","ook","want","door","naar","toen","altijd","misschien","natuurlijk","omdat","terwijl","tegen","zonder","eigenlijk"]
+};
+
+const sel = document.getElementById('lijst');
+function optGroep(titel, obj){
+  const g = document.createElement('optgroup'); g.label = titel;
+  for(const naam in obj){ const o=document.createElement('option'); o.value=naam; o.textContent=naam; g.appendChild(o); }
+  sel.appendChild(g);
+}
+optGroep("AVI-niveaus", NIVEAUS);
+optGroep("Leescategorieën", CATEGORIEEN);
+const gEigen=document.createElement('optgroup'); gEigen.label="Eigen";
+const oEigen=document.createElement('option'); oEigen.value="__eigen__"; oEigen.textContent="✏️ Eigen woorden";
+gEigen.appendChild(oEigen); sel.appendChild(gEigen);
+
+let basis=[], lijst=[], idx=0, timer=null, eigenWoorden=[];
+const woordEl=document.getElementById('woord');
+const voortgangEl=document.getElementById('voortgang');
+const hintEl=document.getElementById('hint');
+const startKnop=document.getElementById('startKnop');
+const autoChip=document.getElementById('auto');
+const husselChip=document.getElementById('hussel');
+const tempoEl=document.getElementById('tempo');
+const isAuto=()=>autoChip.classList.contains('aan');
+const isHussel=()=>husselChip.classList.contains('aan');
+
+function haalBasis(){
+  const n=sel.value;
+  if(n==="__eigen__") return eigenWoorden.slice();
+  if(NIVEAUS[n]) return NIVEAUS[n].slice();
+  if(CATEGORIEEN[n]) return CATEGORIEEN[n].slice();
+  return [];
+}
+function hussel(a){ for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; }
+function laadLijst(reset=true){
+  basis=haalBasis();
+  lijst=isHussel()?hussel(basis.slice()):basis.slice();
+  if(reset) idx=0;
+  stop();
+  if(lijst.length===0){ woordEl.textContent="Geen woorden"; voortgangEl.textContent=""; return; }
+  toon();
+}
+function toon(){
+  if(!lijst.length) return;
+  woordEl.style.opacity=0;
+  requestAnimationFrame(()=>{ woordEl.textContent=lijst[idx]; woordEl.style.opacity=1; });
+  voortgangEl.textContent=(idx+1)+" / "+lijst.length;
+}
+function volgende(){ if(!lijst.length) return; idx=(idx+1)%lijst.length; toon(); }
+function vorige(){ if(!lijst.length) return; idx=(idx-1+lijst.length)%lijst.length; toon(); }
+function start(){
+  if(!lijst.length) return;
+  if(isAuto()){ stop(); timer=setInterval(volgende, parseFloat(tempoEl.value)*1000);
+    startKnop.textContent="⏸ Pauze"; }
+  else { volgende(); }
+}
+function stop(){ if(timer){clearInterval(timer); timer=null;} startKnop.textContent="▶ Start"; }
+function toggleStart(){ if(timer) stop(); else start(); }
+
+sel.addEventListener('change', ()=>{
+  document.getElementById('eigenvak').classList.toggle('aan', sel.value==="__eigen__");
+  laadLijst(true);
+});
+husselChip.addEventListener('click', ()=>{ husselChip.classList.toggle('aan'); laadLijst(false); });
+autoChip.addEventListener('click', ()=>{
+  autoChip.classList.toggle('aan');
+  document.getElementById('tempoveld').style.opacity=isAuto()?1:.4;
+  stop();
+  hintEl.textContent=isAuto()?"Klik hier of druk op spatie om te starten":"Klik hier of druk op spatie voor het volgende woord";
+});
+tempoEl.addEventListener('input', ()=>{
+  document.getElementById('tempoval').textContent=parseFloat(tempoEl.value).toFixed(1).replace('.',',')+" sec";
+  if(timer) start();
+});
+startKnop.addEventListener('click', toggleStart);
+document.getElementById('volgendeKnop').addEventListener('click', ()=>{ stop(); volgende(); });
+document.getElementById('vorigeKnop').addEventListener('click', ()=>{ stop(); vorige(); });
+document.getElementById('flits').addEventListener('click', ()=>{ if(isAuto()) toggleStart(); else volgende(); });
+document.getElementById('grootKnop').addEventListener('click', ()=>{
+  const f=document.getElementById('flits');
+  if(!document.fullscreenElement){ f.requestFullscreen&&f.requestFullscreen(); }
+  else { document.exitFullscreen&&document.exitFullscreen(); }
+});
+document.addEventListener('keydown', (e)=>{
+  if(e.code==="Space"){ e.preventDefault(); if(isAuto()) toggleStart(); else volgende(); }
+  else if(e.code==="ArrowRight"){ stop(); volgende(); }
+  else if(e.code==="ArrowLeft"){ stop(); vorige(); }
+});
+document.getElementById('eigenKnop').addEventListener('click', ()=>{
+  document.getElementById('eigenvak').classList.toggle('aan');
+});
+document.getElementById('eigentoepassen').addEventListener('click', ()=>{
+  const t=document.getElementById('eigeninvoer').value;
+  eigenWoorden=t.split(/[\s,;\n]+/).map(s=>s.trim()).filter(s=>s.length>0);
+  if(!eigenWoorden.length){ alert("Vul eerst een paar woorden in."); return; }
+  sel.value="__eigen__"; document.getElementById('eigenvak').classList.add('aan'); laadLijst(true);
+});
+document.getElementById('printKnop').addEventListener('click', ()=>{
+  const naam=sel.value==="__eigen__"?"Eigen woorden":sel.value;
+  const woorden=basis.length?basis:haalBasis();
+  const cellen=woorden.map(w=>'<div class="w">'+w+'</div>').join('');
+  document.getElementById('kaartprint').innerHTML=
+    '<h2>Leeskaart · '+naam+'</h2>'+
+    '<div class="instr">Lees zo veel mogelijk woorden. Racelezen? Lees 3× (1 minuut) en zet elke keer een streepje bij je laatste woord.</div>'+
+    '<div class="rooster">'+cellen+'</div>';
+  window.print();
+});
+
+document.getElementById('tempoveld').style.opacity=1;
+laadLijst(true);
+hintEl.textContent="Klik hier of druk op spatie om te starten";
+</script>
+</body>
+</html>
