@@ -30,6 +30,10 @@
   h1{font-size:clamp(30px,5vw,46px); font-weight:800; line-height:1.05; margin:6px 0 4px;}
   .lead{color:var(--muted); font-size:16px; max-width:660px;}
 
+  .niveaufocus{margin-top:12px; padding:10px 16px; font-size:14px; color:var(--ink);
+    background:rgba(255,255,255,.6); border:1px dashed var(--rand-sterk); border-radius:14px;}
+  .niveaufocus b{color:var(--groen);}
+
   .kaart{background:var(--kaart); border:1px solid var(--rand); border-radius:var(--radius);
     box-shadow:var(--schaduw); backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);}
 
@@ -146,6 +150,8 @@
     </span>
   </div>
 
+  <div class="niveaufocus" id="niveaufocus"></div>
+
   <!-- FLITSEN -->
   <div id="flitsview">
     <div class="kaart flits" id="flits">
@@ -226,6 +232,31 @@ const CATEGORIEEN = {
   "Samenstellingen": ["voetbalveld","zwembad","huiswerk","boekenkast","tandenborstel","verjaardagsfeest","brandweerauto","politiebureau","schoolplein","boterham","pindakaas","voetbalclub","zomervakantie","sinterklaasfeest","achtertuin","speelgoedwinkel","gereedschapskist","computerscherm","fietsenrek","regenjas","zonnebril","wandelpad","boomhut","strandbal"]
 };
 
+// Korte focus per niveau/categorie (leesdoel-stijl, zoals in de methode-opbouw)
+const FOCUS = {
+  "AVI Start · groep 3":"Korte klankzuivere woorden (mkm): eerst goed verklanken.",
+  "AVI M3 · groep 3":"Woorden met medeklinkercombinaties (kl-, st-, tr-, pl-).",
+  "AVI E3 · groep 3":"Moeilijkere clusters en woordeinden (schr-, -cht, -ngst).",
+  "AVI M4 · groep 4":"Meerlettergrepige woorden vlot lezen; woorden met klinkers.",
+  "AVI E4 · groep 4":"Woorden met -ng/-nk, ei/ij en langere woorden.",
+  "AVI M5 · groep 5":"Woorden met au/ou en langere, meerlettergrepige woorden.",
+  "AVI E5 · groep 5":"Woorden op -ig/-lijk en samenstellingen.",
+  "AVI M6 · groep 6":"Leenwoorden en woorden op -tie.",
+  "AVI E6 · groep 6":"Woorden op -isch en moeilijke leenwoorden.",
+  "AVI M7 · groep 7":"Lange, meerlettergrepige woorden vlot en vloeiend lezen.",
+  "AVI Plus · groep 8":"Complexe en vreemde woorden; vlot en vloeiend lezen.",
+  "Medeklinkerclusters":"Woorden met stapelmedeklinkers (schr-, str-, -cht, -ngst).",
+  "Open en gesloten lettergrepen":"bo-men vs. bom-men: let op de klank en het aantal medeklinkers.",
+  "Verkleinwoorden (-je / -tje)":"Woorden op -je, -tje, -pje.",
+  "-ng / -nk":"Het verschil tussen de -ng- en -nk-klank.",
+  "eer / oor / eur":"Woorden met de klankgroepen eer, oor en eur.",
+  "aai / ooi / oei":"Woorden met aai, ooi en oei.",
+  "-ig / -lijk":"Woordeinden -ig en -lijk (die je vaak anders hoort dan schrijft).",
+  "-tie / -isch":"Woorden op -tie (tsie) en -isch (ies).",
+  "Samenstellingen":"Lange woorden opgebouwd uit twee woorden.",
+  "__eigen__":"Je eigen woorden."
+};
+
 // ---- selectbox ----
 const sel = document.getElementById('lijst');
 function optGroep(titel, obj){
@@ -278,8 +309,15 @@ function haalBasis(){
   return [];
 }
 function husselArr(a){ for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; }
+function toonFocus(){
+  const f=FOCUS[sel.value];
+  const el=$('niveaufocus');
+  if(f){ el.style.display='block'; el.innerHTML='<b>Focus:</b> '+f; }
+  else { el.style.display='none'; }
+}
 function laadLijst(reset=true){
   basis=haalBasis();
+  toonFocus();
   lijst=isHussel()?husselArr(basis.slice()):basis.slice();
   if(reset) idx=0;
   stop(); verbergKlaar();
