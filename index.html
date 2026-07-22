@@ -136,6 +136,13 @@
       <label for="lijst">Woordenlijst</label>
       <select id="lijst"></select>
     </div>
+    <div class="veld" id="pakketveld">
+      <label>Pakket</label>
+      <div class="seg">
+        <button class="chip aan" id="pakA">A</button>
+        <button class="chip" id="pakB">B</button>
+      </div>
+    </div>
     <span class="groep-controls" id="flitscontrols">
       <button class="chip aan" id="auto"><span class="bol"></span> Automatisch</button>
       <div class="veld" id="tempoveld">
@@ -271,7 +278,7 @@ const oE=document.createElement('option'); oE.value="__eigen__"; oE.textContent=
 const selecteerbaar=[...sel.options].filter(o=>o.value!=="__eigen__").map(o=>o.value);
 
 // ---- state ----
-let modus="flitsen", basis=[], lijst=[], idx=0, timer=null, eigenWoorden=[];
+let modus="flitsen", basis=[], lijst=[], idx=0, timer=null, eigenWoorden=[], pakket="A";
 let raceTimer=null, raceSec=60;
 const $=id=>document.getElementById(id);
 const woordEl=$('woord'), voortgangEl=$('voortgang'), hintEl=$('hint'), balkje=$('balkje');
@@ -286,7 +293,7 @@ const vorm=w=>isHoofd()?w.toUpperCase():w;
 function bewaar(){
   try{ localStorage.setItem('leesflitser', JSON.stringify({
     lijst:sel.value, tempo:tempoEl.value, auto:isAuto(), hussel:isHussel(),
-    leesletter:document.body.classList.contains('leesletter'), hoofd:isHoofd(), modus
+    leesletter:document.body.classList.contains('leesletter'), hoofd:isHoofd(), modus, pakket
   })); }catch(e){}
 }
 function herstel(){
@@ -297,14 +304,22 @@ function herstel(){
   if(s.hussel===false) husselChip.classList.remove('aan');
   if(s.leesletter){ document.body.classList.add('leesletter'); leesletterKnop.classList.add('aan'); }
   if(s.hoofd){ hoofdKnop.classList.add('aan'); }
+  if(s.pakket==="B") pakket="B";
   if(s.modus==="racelezen") zetModus("racelezen");
 }
 
 // ---- data ----
+function isNiveau(){ return !!NIVEAUS[sel.value]; }
+function splitPakket(arr){ const m=Math.ceil(arr.length/2); return {A:arr.slice(0,m), B:arr.slice(m)}; }
+function updatePakketUI(){
+  $('pakketveld').style.display = isNiveau() ? 'flex' : 'none';
+  $('pakA').classList.toggle('aan', pakket==='A');
+  $('pakB').classList.toggle('aan', pakket==='B');
+}
 function haalBasis(){
   const n=sel.value;
   if(n==="__eigen__") return eigenWoorden.slice();
-  if(NIVEAUS[n]) return NIVEAUS[n].slice();
+  if(NIVEAUS[n]) return splitPakket(NIVEAUS[n])[pakket].slice();
   if(CATEGORIEEN[n]) return CATEGORIEEN[n].slice();
   return [];
 }
@@ -393,8 +408,10 @@ function zetModus(m){
 // ---- events ----
 sel.addEventListener('change', ()=>{
   $('eigenvak').classList.toggle('aan', sel.value==="__eigen__");
-  laadLijst(true); bewaar();
+  updatePakketUI(); laadLijst(true); bewaar();
 });
+$('pakA').addEventListener('click', ()=>{ pakket='A'; updatePakketUI(); laadLijst(true); bewaar(); });
+$('pakB').addEventListener('click', ()=>{ pakket='B'; updatePakketUI(); laadLijst(true); bewaar(); });
 husselChip.addEventListener('click', ()=>{ husselChip.classList.toggle('aan'); laadLijst(false); bewaar(); });
 autoChip.addEventListener('click', ()=>{
   autoChip.classList.toggle('aan'); $('tempoveld').style.opacity=isAuto()?1:.4; stop();
@@ -468,6 +485,7 @@ herstel();
 $('tempoval').textContent=parseFloat(tempoEl.value).toFixed(1).replace('.',',')+" sec";
 $('tempoveld').style.opacity=isAuto()?1:.4;
 $('eigenvak').classList.toggle('aan', sel.value==="__eigen__");
+updatePakketUI();
 laadLijst(true);
 </script>
 </body>
