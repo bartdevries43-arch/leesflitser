@@ -425,14 +425,11 @@ function renderRace(){
 function updateTijd(){ const m=Math.floor(raceSec/60), s=raceSec%60;
   $('tijd').textContent=m+":"+(s<10?"0":"")+s; $('tijd').classList.toggle('rood', raceSec<=10); }
 function raceStartFn(){ if(raceTimer){ raceStop(); return; }
-  raceTimer=setInterval(()=>{ raceSec--; updateTijd(); if(raceSec<=0){ raceStop(); $('tijd').textContent="Tijd!"; piep(); } },1000);
+  raceTimer=setInterval(()=>{ raceSec--; updateTijd(); if(raceSec<=0){ raceStop(); $('tijd').textContent="Tijd!"; } },1000);
   $('raceStart').textContent="⏸ Pauze";
 }
 function raceStop(vol){ if(raceTimer){ clearInterval(raceTimer); raceTimer=null; } $('raceStart').textContent="▶ Start (1 min)";
   if(vol){ raceSec=60; updateTijd(); $('tijd').classList.remove('rood'); } }
-function piep(){ try{ const c=new (window.AudioContext||window.webkitAudioContext)();
-  const o=c.createOscillator(), g=c.createGain(); o.connect(g); g.connect(c.destination);
-  o.frequency.value=880; g.gain.value=.15; o.start(); setTimeout(()=>{o.stop(); c.close();},450); }catch(e){} }
 
 function applyModusUI(){
   $('modeFlits').classList.toggle('aan', modus==='flitsen');
