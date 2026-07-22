@@ -6,99 +6,125 @@
 <title>Leesflitser · technisch lezen</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Andika:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Andika:wght@400;700&family=Baloo+2:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
   *{margin:0; padding:0; box-sizing:border-box;}
   :root{
-    --ink:#24313d; --muted:#65717e; --groen:#3a9d7b; --paars:#8d6be8;
-    --rand:rgba(141,107,232,.18); --rand-sterk:rgba(141,107,232,.28);
-    --kaart:rgba(255,255,255,.80); --schaduw:0 18px 40px rgba(85,68,121,.10);
-    --radius:20px;
+    --ink:#212a35; --muted:#6a7683; --accent:#7c5cff; --accent2:#2fa37a;
+    --line:rgba(124,92,255,.20); --line-2:rgba(124,92,255,.32);
+    --card:rgba(255,255,255,.86); --card-2:#ffffff; --veld:#ffffff;
+    --shadow:0 18px 44px rgba(70,58,120,.12);
+    --radius:22px;
+    --bg:
+      radial-gradient(circle at 10% 6%, rgba(178,236,213,.55), transparent 460px),
+      radial-gradient(circle at 92% 8%, rgba(206,188,255,.62), transparent 520px),
+      radial-gradient(circle at 50% 112%, rgba(178,236,213,.30), transparent 560px),
+      #eef1f7;
   }
-  body{
-    font-family:-apple-system,system-ui,"SF Pro Display","Segoe UI",Inter,ui-sans-serif,sans-serif;
-    color:var(--ink); min-height:100vh;
-    background:
-      radial-gradient(circle at 12% 8%, rgba(174,233,209,.55), transparent 480px),
-      radial-gradient(circle at 88% 10%, rgba(205,184,255,.6), transparent 520px),
-      radial-gradient(circle at 50% 108%, rgba(174,233,209,.30), transparent 520px),
-      #eef1f6;
-    background-attachment:fixed;
+  body.digibord{
+    --ink:#f2f6fb; --muted:#9fb0c2; --accent:#a68bff; --accent2:#4fd3a0;
+    --line:rgba(255,255,255,.14); --line-2:rgba(255,255,255,.24);
+    --card:rgba(30,38,52,.92); --card-2:#1c2430; --veld:#232d3c;
+    --shadow:0 18px 44px rgba(0,0,0,.45);
+    --bg:radial-gradient(circle at 12% 6%, rgba(60,45,110,.55), transparent 520px),
+        radial-gradient(circle at 90% 10%, rgba(30,80,70,.5), transparent 520px),
+        #0e131c;
   }
-  .app{max-width:1000px; margin:0 auto; padding:26px 18px 48px;}
-  .eyebrow{color:var(--groen); font-weight:800; text-transform:uppercase; letter-spacing:1px; font-size:12.5px;}
-  h1{font-size:clamp(30px,5vw,46px); font-weight:800; line-height:1.05; margin:6px 0 4px;}
-  .lead{color:var(--muted); font-size:16px; max-width:660px;}
+  body{font-family:-apple-system,system-ui,"Segoe UI",Inter,ui-sans-serif,sans-serif;
+    color:var(--ink); min-height:100vh; background:var(--bg); background-attachment:fixed;}
+  h1{font-family:"Baloo 2",system-ui,sans-serif; font-weight:800;}
+  .app{max-width:1040px; margin:0 auto; padding:24px 18px 60px;}
+  .eyebrow{color:var(--accent2); font-weight:800; text-transform:uppercase; letter-spacing:1.5px; font-size:12.5px;}
+  h1{font-size:clamp(32px,5vw,50px); line-height:1.02; margin:4px 0 4px;}
+  .lead{color:var(--muted); font-size:15.5px; max-width:640px;}
+
+  .card{background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+    box-shadow:var(--shadow); backdrop-filter:blur(7px); -webkit-backdrop-filter:blur(7px);}
+
+  .balk{margin-top:18px; padding:16px 18px; display:flex; flex-wrap:wrap; gap:14px 22px; align-items:flex-end;}
+  .veld{display:flex; flex-direction:column; gap:6px;}
+  .veld label,.tempolabel{font-size:11.5px; color:var(--muted); font-weight:800; text-transform:uppercase; letter-spacing:.6px;}
+  select{padding:11px 14px; border:1px solid var(--line-2); border-radius:14px; background:var(--veld);
+    font-family:inherit; font-size:15px; font-weight:600; color:var(--ink); min-width:230px; cursor:pointer;}
+  input[type=range]{accent-color:var(--accent); width:150px;}
+  .tempoval{color:var(--accent); font-weight:900;}
+  .groep-controls{display:flex; gap:12px 16px; flex-wrap:wrap; align-items:flex-end;}
+
+  .chip{border:1px solid var(--line-2); background:var(--veld); color:var(--ink); font-family:inherit;
+    font-weight:800; font-size:14px; padding:11px 15px; border-radius:13px; cursor:pointer;
+    transition:transform .07s ease, background .15s; display:inline-flex; align-items:center; gap:8px;}
+  .chip:hover{transform:translateY(-1px);}
+  .chip.aan{background:var(--accent); color:#fff; border-color:transparent;}
+  .chip .bol{width:15px; height:15px; border-radius:50%; border:2px solid currentColor; opacity:.5;}
+  .chip.aan .bol{background:#fff; border-color:#fff; opacity:1;}
+
+  /* Mode-switcher (segmented) */
+  .seg{display:inline-flex; padding:5px; gap:4px; background:var(--veld); border:1px solid var(--line-2);
+    border-radius:16px;}
+  .seg button{border:none; background:transparent; color:var(--ink); font-family:inherit; font-weight:800;
+    font-size:14.5px; padding:9px 16px; border-radius:12px; cursor:pointer; display:inline-flex; align-items:center; gap:7px;}
+  .seg button.aan{background:var(--accent); color:#fff;}
 
   .niveaufocus{margin-top:12px; padding:10px 16px; font-size:14px; color:var(--ink);
-    background:rgba(255,255,255,.6); border:1px dashed var(--rand-sterk); border-radius:14px;}
-  .niveaufocus b{color:var(--groen);}
+    background:var(--card); border:1px dashed var(--line-2); border-radius:14px;}
+  .niveaufocus b{color:var(--accent2);}
 
-  .kaart{background:var(--kaart); border:1px solid var(--rand); border-radius:var(--radius);
-    box-shadow:var(--schaduw); backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);}
+  /* Flitsen / Zinnen */
+  .flits{margin-top:16px; min-height:48vh; display:flex; align-items:center; justify-content:center;
+    position:relative; cursor:pointer; user-select:none; overflow:hidden; padding:26px; background:var(--card-2);}
+  .woord{font-size:clamp(52px,15vw,210px); font-weight:800; letter-spacing:1px; text-align:center;
+    line-height:1.02; color:var(--ink); transition:opacity .09s; font-family:"Baloo 2",system-ui,sans-serif;}
+  body.zinmodus .woord{font-size:clamp(26px,4.6vw,60px); font-weight:700; line-height:1.32; letter-spacing:.3px;
+    max-width:20ch; white-space:normal;}
+  .voortgang{position:absolute; top:14px; right:20px; font-size:15px; color:var(--muted); font-weight:800;}
+  .hint{position:absolute; bottom:16px; left:0; right:0; text-align:center; font-size:13px; color:var(--muted); opacity:.8;}
+  .balkje{position:absolute; left:0; bottom:0; height:6px; width:0; background:var(--accent);}
 
-  .balk{margin-top:18px; padding:16px 18px; display:flex; flex-wrap:wrap; gap:14px 20px; align-items:flex-end;}
-  .veld{display:flex; flex-direction:column; gap:5px;}
-  .veld label,.tempolabel{font-size:12px; color:var(--muted); font-weight:800; text-transform:uppercase; letter-spacing:.5px;}
-  select{padding:11px 14px; border:1px solid var(--rand-sterk); border-radius:14px;
-    background:rgba(255,255,255,.92); font-family:inherit; font-size:15px; font-weight:600; color:var(--ink); min-width:220px; cursor:pointer;}
-  input[type=range]{accent-color:var(--paars); width:160px;}
-  .tempoval{color:var(--paars); font-weight:900;}
-  .groep-controls{display:flex; gap:14px 18px; flex-wrap:wrap; align-items:flex-end;}
+  .flits:fullscreen{border-radius:0; background:var(--card-2);}
+  .flits:fullscreen .woord{font-size:20vw;}
+  body.zinmodus .flits:fullscreen .woord{font-size:7vw;}
+  .fsbar{display:none;}
+  .flits:fullscreen .fsbar{display:flex; position:absolute; bottom:26px; left:50%; transform:translateX(-50%);
+    gap:12px; z-index:6;}
+  .flits:fullscreen .fsbar button{font-size:22px; padding:14px 22px; border-radius:16px; border:none; cursor:pointer;
+    background:var(--accent); color:#fff; font-weight:800;}
+  .flits:fullscreen .fsbar button.grijs{background:rgba(140,140,160,.35); color:var(--ink);}
+  .flits:fullscreen .fshint{display:block;}
+  .fshint{display:none; position:absolute; top:16px; left:0; right:0; text-align:center; color:var(--muted); font-size:15px;}
 
-  .chip{border:1px solid var(--rand-sterk); background:rgba(255,255,255,.82); color:var(--ink);
-    font-family:inherit; font-weight:900; font-size:14px; padding:11px 16px; border-radius:14px;
-    cursor:pointer; transition:transform .07s ease; display:inline-flex; align-items:center; gap:8px;}
-  .chip:hover{transform:translateY(-1px);}
-  .chip.aan{background:var(--paars); color:#fff; border-color:transparent;}
-  .chip .bol{width:16px; height:16px; border-radius:50%; border:2px solid currentColor; opacity:.55;}
-  .chip.aan .bol{background:#fff; border-color:#fff; opacity:1;}
-  .seg{display:inline-flex; gap:8px;}
-
-  /* Flitsen */
-  .flits{margin-top:16px; min-height:46vh; display:flex; align-items:center; justify-content:center;
-    position:relative; cursor:pointer; user-select:none; overflow:hidden; padding:24px; border:1px solid var(--rand);}
-  .woord{font-size:clamp(52px,15vw,200px); font-weight:800; letter-spacing:1px; text-align:center;
-    line-height:1.02; color:var(--ink); transition:opacity .08s;}
-  .voortgang{position:absolute; top:14px; right:20px; font-size:15px; color:#9aa4b0; font-weight:800;}
-  .hint{position:absolute; bottom:16px; left:0; right:0; text-align:center; font-size:13px; color:#aab2ba;}
-  .balkje{position:absolute; left:0; bottom:0; height:6px; width:0; background:var(--paars); border-radius:0 6px 6px 0;}
-  .flits:fullscreen{border-radius:0; background:#fff;}
-  .flits:fullscreen .woord{font-size:22vw;}
-  .klaar{position:absolute; inset:0; background:rgba(255,255,255,.94); display:none;
-    flex-direction:column; align-items:center; justify-content:center; gap:16px; text-align:center; padding:20px;}
+  .klaar{position:absolute; inset:0; background:var(--card-2); display:none; flex-direction:column;
+    align-items:center; justify-content:center; gap:16px; text-align:center; padding:20px; z-index:7;}
   .klaar.aan{display:flex;}
-  .klaar .big{font-size:clamp(30px,6vw,56px); font-weight:900;}
+  .klaar .big{font-size:clamp(30px,6vw,56px); font-weight:900; font-family:"Baloo 2",sans-serif;}
   .klaar .sub{color:var(--muted); font-size:16px;}
   .klaar .rij{display:flex; gap:10px; flex-wrap:wrap; justify-content:center;}
 
   /* Racelezen */
-  .race{margin-top:16px; padding:20px; display:none;}
+  .race{margin-top:16px; padding:22px; display:none;}
   .race.aan{display:block;}
-  .racekop{display:flex; flex-wrap:wrap; align-items:center; gap:16px; justify-content:space-between; margin-bottom:14px;}
-  .tijd{font-size:clamp(44px,9vw,74px); font-weight:900; font-variant-numeric:tabular-nums; color:var(--ink);}
-  .tijd.rood{color:#c0392b;}
-  .racegrid{display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:6px 14px;}
-  .rw{font-size:clamp(20px,2.4vw,26px); font-weight:700; padding:6px 6px; border-bottom:1px dotted #c9d0d6; color:var(--ink);}
-  .race-instr{color:var(--muted); font-size:14px; margin-top:12px;}
+  .racekop{display:flex; flex-wrap:wrap; align-items:center; gap:16px; justify-content:space-between; margin-bottom:16px;}
+  .tijd{font-size:clamp(46px,9vw,78px); font-weight:900; font-variant-numeric:tabular-nums;
+    font-family:"Baloo 2",sans-serif; color:var(--ink);}
+  .tijd.rood{color:#e2534a;}
+  .racegrid{display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:6px 16px;}
+  .rw{font-size:clamp(20px,2.4vw,27px); font-weight:700; padding:7px 4px; border-bottom:1px dotted var(--line-2); color:var(--ink);}
+  .race-instr{color:var(--muted); font-size:14px; margin-top:14px;}
 
   .knoppen{display:flex; flex-wrap:wrap; gap:10px; margin-top:16px;}
-  button.btn{font-family:inherit; font-size:16px; font-weight:900; border:1px solid var(--rand-sterk);
-    cursor:pointer; padding:13px 20px; border-radius:16px; background:rgba(255,255,255,.85); color:var(--ink); transition:transform .07s ease;}
+  button.btn{font-family:inherit; font-size:16px; font-weight:800; border:1px solid var(--line-2); cursor:pointer;
+    padding:13px 20px; border-radius:15px; background:var(--veld); color:var(--ink); transition:transform .07s ease;}
   button.btn:hover{transform:translateY(-2px);}
-  button.btn.primair{background:var(--paars); color:#fff; border-color:transparent; font-size:19px; padding:15px 30px;}
+  button.btn.primair{background:var(--accent); color:#fff; border-color:transparent; font-size:19px; padding:15px 30px;}
 
   .eigen{display:none; margin-top:14px; padding:16px 18px;}
   .eigen.aan{display:block;}
   .eigen p{font-size:13px; color:var(--muted); margin-bottom:8px;}
-  textarea{width:100%; height:110px; font-family:inherit; font-size:14px; padding:10px;
-    border:1px solid var(--rand-sterk); border-radius:14px; resize:vertical; background:rgba(255,255,255,.92); color:var(--ink);}
+  textarea{width:100%; height:110px; font-family:inherit; font-size:14px; padding:10px; border:1px solid var(--line-2);
+    border-radius:14px; resize:vertical; background:var(--veld); color:var(--ink);}
 
-  /* Leesletter (fijner voor beginnende lezers) */
-  body.leesletter .woord, body.leesletter .rw, body.leesletter .kaartprint .w{
-    font-family:"Andika","Comic Sans MS","Comic Neue",var(--ink),sans-serif;}
+  body.leesletter .woord, body.leesletter .rw, body.leesletter .kaartprint td{
+    font-family:"Andika","Comic Sans MS","Comic Neue",sans-serif;}
 
-  /* Printbare leeskaart */
   .kaartprint{display:none;}
   @media print{
     body{background:#fff;}
@@ -121,27 +147,25 @@
   <header>
     <div class="eyebrow">Technisch lezen</div>
     <h1>Leesflitser</h1>
-    <div class="lead">Flits woorden op jouw niveau, groep 3 t/m 8. Klassikaal op het digibord of zelf op de tablet. Met racelezen-timer en leeskaarten om te printen.</div>
+    <div class="lead">Flits letters, woorden en zinnen op jouw niveau, groep 3 t/m 8. Klassikaal op het digibord of zelf op de tablet. Met racelezen-timer en leeskaarten om te printen.</div>
   </header>
 
-  <div class="kaart balk">
+  <div class="card balk">
     <div class="veld">
       <label>Modus</label>
       <div class="seg">
-        <button class="chip aan" id="modeFlits">⚡ Flitsen</button>
-        <button class="chip" id="modeRace">🏁 Racelezen</button>
+        <button class="aan" id="modeFlits">⚡ Flitsen</button>
+        <button id="modeZin">💬 Zinnen</button>
+        <button id="modeRace">🏁 Racelezen</button>
       </div>
     </div>
     <div class="veld">
-      <label for="lijst">Woordenlijst</label>
+      <label for="lijst">Lijst</label>
       <select id="lijst"></select>
     </div>
     <div class="veld" id="pakketveld">
       <label>Pakket</label>
-      <div class="seg">
-        <button class="chip aan" id="pakA">A</button>
-        <button class="chip" id="pakB">B</button>
-      </div>
+      <div class="seg"><button class="aan" id="pakA">A</button><button id="pakB">B</button></div>
     </div>
     <span class="groep-controls" id="flitscontrols">
       <button class="chip aan" id="auto"><span class="bol"></span> Automatisch</button>
@@ -154,24 +178,31 @@
     <span class="groep-controls">
       <button class="chip" id="leesletterKnop"><span class="bol"></span> Leesletter</button>
       <button class="chip" id="hoofdKnop"><span class="bol"></span> HOOFDLETTERS</button>
+      <button class="chip" id="digibordKnop"><span class="bol"></span> Digibord</button>
     </span>
   </div>
 
   <div class="niveaufocus" id="niveaufocus"></div>
 
-  <!-- FLITSEN -->
   <div id="flitsview">
-    <div class="kaart flits" id="flits">
+    <div class="card flits" id="flits">
       <span class="voortgang" id="voortgang"></span>
+      <span class="fshint" id="fshint">Tik links = terug · tik rechts = verder</span>
       <span class="woord" id="woord">Klaar?</span>
       <span class="hint" id="hint">Klik hier of druk op spatie om te starten</span>
       <span class="balkje" id="balkje"></span>
+      <div class="fsbar" id="fsbar">
+        <button class="grijs" id="fsVorige">◀</button>
+        <button id="fsStart">▶</button>
+        <button class="grijs" id="fsVolgende">▶▶</button>
+        <button class="grijs" id="fsSluit">✕</button>
+      </div>
       <div class="klaar" id="klaar">
-        <div class="big">Ronde klaar! 🎉</div>
-        <div class="sub">Je hebt alle woorden gehad.</div>
+        <div class="big" id="klaarTitel">Ronde klaar! 🎉</div>
+        <div class="sub">Goed gelezen. Nog een keer of verder?</div>
         <div class="rij">
           <button class="btn primair" id="opnieuwKnop">↻ Opnieuw</button>
-          <button class="btn" id="volgniveauKnop">Volgend niveau ▶</button>
+          <button class="btn" id="volgniveauKnop">Volgende ▶</button>
         </div>
       </div>
     </div>
@@ -183,9 +214,8 @@
     </div>
   </div>
 
-  <!-- RACELEZEN -->
   <div id="raceview">
-    <div class="kaart race" id="race">
+    <div class="card race" id="race">
       <div class="racekop">
         <div class="tijd" id="tijd">1:00</div>
         <div class="knoppen" style="margin:0;">
@@ -194,38 +224,40 @@
         </div>
       </div>
       <div class="racegrid" id="racegrid"></div>
-      <div class="race-instr">Lees hardop zo veel mogelijk woorden in 1 minuut. Doe het 3× en probeer elke keer verder te komen. Tip: kies "Door elkaar" uit voor een vaste volgorde.</div>
+      <div class="race-instr">Lees hardop zo veel mogelijk woorden in 1 minuut. Doe het 3× en probeer elke keer verder te komen.</div>
     </div>
   </div>
 
-  <!-- Gedeelde knoppen -->
   <div class="knoppen">
     <button class="btn" id="printKnop">🖨 Print leeskaart</button>
     <button class="btn" id="eigenKnop">✏️ Eigen woorden</button>
   </div>
 
-  <div class="kaart eigen" id="eigenvak">
-    <p>Plak of typ je eigen woorden (spatie, komma of nieuwe regel ertussen). Klik daarna op "Gebruik deze woorden".</p>
-    <textarea id="eigeninvoer" placeholder="maan  roos  vis  tak  zon ..."></textarea>
-    <div style="margin-top:10px;"><button class="btn primair" id="eigentoepassen">Gebruik deze woorden</button></div>
+  <div class="card eigen" id="eigenvak">
+    <p>Plak of typ je eigen woorden of zinnen. Voor woorden: spatie/komma/nieuwe regel ertussen. Voor zinnen: één per regel.</p>
+    <textarea id="eigeninvoer" placeholder="maan  roos  vis ...  (of in de Zinnen-modus: één zin per regel)"></textarea>
+    <div style="margin-top:10px;"><button class="btn primair" id="eigentoepassen">Gebruik dit</button></div>
   </div>
 </div>
 
 <div class="kaartprint" id="kaartprint"></div>
 
 <script>
+const LETTERS_GROEP = {
+  "Letters & klanken · groep 3": ["m","r","v","s","z","f","n","b","d","p","t","k","l","h","j","w","g","aa","ee","oo","uu","oe","ie","eu","ei","ij","ui","au","ou","ng","nk","ch","sch","aai","ooi","oei","eer","oor","eur"]
+};
 const NIVEAUS = {
-  "AVI Start · groep 3": ["maan","roos","vis","bok","tak","pen","sok","dak","bal","kip","mes","bos","gum","jas","kat","hok","weg","tol","muis","koe","zee","boom","huis","boot","buik","tuin","geit","deur","neus","doos","kaas","boek","voet","maan","riem","zon"],
+  "AVI Start · groep 3": ["maan","roos","vis","bok","tak","pen","sok","dak","bal","kip","mes","bos","gum","jas","kat","hok","weg","tol","muis","koe","zee","boom","huis","boot","buik","tuin","geit","deur","neus","doos","kaas","boek","voet","vuur","riem","zon"],
   "AVI M3 · groep 3": ["stok","trap","plas","klok","stem","knal","smal","drop","kruk","slak","vlek","brief","storm","plank","sterk","kast","hand","wolk","veld","spin","klas","trots","vlag","bloem","klomp","twee","zwaan","snel","groot","sprong","stoel","kraan","vloer","zwaar","brood","strak"],
   "AVI E3 · groep 3": ["schaap","schoen","sprong","straat","scherp","schroef","strik","knots","vracht","licht","nacht","echt","zacht","markt","herfst","korst","worst","borst","kerk","hemd","ramp","damp","lomp","hark","park","dorp","hengel","schuur","schrift","sprint","struik","twaalf","angst","ernst","wesp","vorst"],
   "AVI M4 · groep 4": ["bakker","tafel","water","appel","bezem","molen","jager","koning","vogel","regen","bloemen","straten","dieren","mensen","keuken","kamer","raket","ballon","tijger","slager","zomer","winter","school","spelen","lopen","wandelen","varen","kijken","tekenen","spelletje","vlinder","krokodil","banaan","tomaat","vakantie","muziek"],
-  "AVI E4 · groep 4": ["slang","bank","jongen","drinken","konijn","trein","fijn","wijzer","keizer","ijsje","eiland","zeilboot","bakkerij","schilderij","woning","ketting","springen","klimmen","tekening","opening","wandeling","honing","paling","spelling","denken","schenken","blank","klank","koning","honger","vinger","zanger","slinger","vlinder","kingpin","engel"],
+  "AVI E4 · groep 4": ["slang","bank","jongen","drinken","konijn","trein","fijn","wijzer","keizer","ijsje","eiland","zeilboot","bakkerij","schilderij","woning","ketting","springen","klimmen","tekening","opening","wandeling","honing","paling","spelling","denken","schenken","blank","klank","koning","honger","vinger","zanger","slinger","engel","kingpin","bengel"],
   "AVI M5 · groep 5": ["kabouter","augustus","chocola","machine","lachen","kachel","koud","vrouw","saus","blauw","gauw","verhaal","verkeer","gordijn","fontein","muzikant","olifant","familie","bibliotheek","computer","tijdschrift","avontuur","paraplu","tomaat","banaan","sinaasappel","aardbei","kokosnoot","kapitein","provincie","kastanje","gitaar","piano","trompet","viool","orkest"],
   "AVI E5 · groep 5": ["gezellig","moeilijk","vriendelijk","eindelijk","plotseling","natuurlijk","verjaardag","voetbalclub","boterham","ziekenhuis","brandweerman","politieauto","verkeerslicht","aardbeving","schoolplein","huiswerk","luidspreker","tandenborstel","verrekijker","gereedschap","achtergrond","boodschappen","wereldbol","zwembad","spannend","gevaarlijk","voorzichtig","onhandig","duidelijk","mogelijk","heerlijk","dagelijks","koninklijk","prachtig","machtig","grappig"],
   "AVI M6 · groep 6": ["politie","vakantie","informatie","station","portie","traktatie","seconde","kilometer","temperatuur","elektriciteit","museum","stadion","cadeau","niveau","restaurant","chauffeur","journaal","garage","etage","bagage","energie","batterij","horloge","minuut","organisatie","situatie","reactie","attractie","conditie","positie","emotie","functie","kwestie","sensatie","directie","collectie"],
   "AVI E6 · groep 6": ["fantastisch","logisch","magisch","technisch","historisch","tropisch","komisch","publiek","muziek","techniek","fabriek","antiek","uniek","sympathiek","allergisch","elektrisch","praktisch","automatisch","dramatisch","energiek","chirurg","quiz","chaos","cadeautje","biologisch","romantisch","chemisch","typisch","kritisch","economisch","symbolisch","tragisch","olympisch","katholiek","muzikant","atletiek"],
   "AVI M7 · groep 7": ["wetenschapper","verantwoordelijk","gebruiksaanwijzing","tegenovergesteld","achtereenvolgens","onafscheidelijk","vanzelfsprekend","buitengewoon","onvoorstelbaar","waarschijnlijk","oorspronkelijk","geschiedenis","aardrijkskunde","vermenigvuldigen","kampioenschap","atletiekvereniging","computerprogramma","universiteit","correspondentie","enthousiasme","catastrofe","temperatuurmeter","nieuwsgierigheid","gereedschapskist","verjaardagsfeest","burgemeester","elektriciteit","tegelijkertijd","samenwerking","bijzonderheid","persoonlijkheid","gemeenschap","verantwoording","overeenkomst","gebeurtenis","ontwikkeling"],
-  "AVI Plus · groep 8": ["parlementsverkiezing","natuurwetenschappen","verantwoordelijkheid","onvoorstelbaarheid","tegenstrijdigheid","wetenschappelijk","onafhankelijkheid","gedetailleerdheid","internationaal","communicatiemiddel","klimaatverandering","duurzaamheidsdoel","biodiversiteit","democratisering","industrialisatie","astronomisch","fotosynthese","evenwichtigheid","nieuwsgierigheidje","onwaarschijnlijk","representatief","categoriseren","concentratievermogen","doorzettingsvermogen","gemeenschappelijk","verantwoordelijkheden","achtereenvolgend","tegenwoordigheid","onvermijdelijk","vertegenwoordiger","samenwerkingsverband","aantrekkingskracht","waarschijnlijkheid","levensomstandigheden","oorspronkelijkheid","voorzichtigheidshalve"]
+  "AVI Plus · groep 8": ["parlementsverkiezing","natuurwetenschappen","verantwoordelijkheid","onvoorstelbaarheid","tegenstrijdigheid","wetenschappelijk","onafhankelijkheid","gedetailleerdheid","internationaal","communicatiemiddel","klimaatverandering","duurzaamheidsdoel","biodiversiteit","democratisering","industrialisatie","astronomisch","fotosynthese","evenwichtigheid","onwaarschijnlijk","representatief","categoriseren","concentratievermogen","doorzettingsvermogen","gemeenschappelijk","achtereenvolgend","tegenwoordigheid","onvermijdelijk","vertegenwoordiger","samenwerkingsverband","aantrekkingskracht","waarschijnlijkheid","levensomstandigheden","oorspronkelijkheid","voorzichtigheidshalve","volksvertegenwoordiging","natuurverschijnsel"]
 };
 const CATEGORIEEN = {
   "Medeklinkerclusters": ["schroef","schrijven","sprong","spreeuw","straat","strand","sterk","markt","herfst","korst","borst","kracht","vlucht","nacht","zacht","licht","plicht","vrucht","splinter","sprinkhaan","structuur","schrapen","stronk","gedrag","angst","ernst","wesp","dorst","borstel","schaats"],
@@ -238,9 +270,16 @@ const CATEGORIEEN = {
   "-tie / -isch": ["politie","vakantie","informatie","portie","traktatie","actie","functie","kwestie","positie","reactie","attractie","collectie","logisch","magisch","technisch","tropisch","komisch","historisch","praktisch","elektrisch","automatisch","dramatisch","fantastisch","typisch"],
   "Samenstellingen": ["voetbalveld","zwembad","huiswerk","boekenkast","tandenborstel","verjaardagsfeest","brandweerauto","politiebureau","schoolplein","boterham","pindakaas","voetbalclub","zomervakantie","sinterklaasfeest","achtertuin","speelgoedwinkel","gereedschapskist","computerscherm","fietsenrek","regenjas","zonnebril","wandelpad","boomhut","strandbal"]
 };
-
-// Korte focus per niveau/categorie (leesdoel-stijl, zoals in de methode-opbouw)
+const ZINNEN = {
+  "Zinnen · groep 3": ["De kat zit op de mat.","Ik zie een grote boom.","Wij gaan naar het bos.","De bal rolt snel weg.","Mijn zus leest een boek.","Kijk, daar loopt een hond!","De zon schijnt fel.","Wij spelen in de tuin.","Pak jij de pen even?","Het is al heel laat."],
+  "Zinnen · groep 4": ["De vogels zingen in de tuin.","Wij fietsen samen naar school.","Op zolder vond ik een oude doos.","De hond rent blaffend door het park.","In de winter valt er soms sneeuw.","Mijn broer bouwt een hoge toren.","Vanavond eten wij lekkere pannenkoeken.","De juf vertelt een spannend verhaal.","Achter het huis staat een grote schuur.","Langzaam kroop de slak over het blad."],
+  "Zinnen · groep 5": ["De brandweer kwam met loeiende sirenes aan.","In de vakantie logeerden wij bij oma.","De kinderen bouwden een enorm zandkasteel.","Plotseling begon het keihard te regenen.","In het museum zagen we een echt skelet.","De trein vertrekt over precies tien minuten.","Voorzichtig pakte zij het gewonde vogeltje op.","Op het schoolplein wordt druk gevoetbald.","De bakker verkoopt vers brood en warme broodjes.","Mijn opa vertelt graag over vroeger."],
+  "Zinnen · groep 6": ["De ontdekkingsreiziger zeilde maandenlang over de oceaan.","Door de storm waaiden overal takken van de bomen.","Wetenschappers onderzoeken hoe planten in de ruimte groeien.","Het toneelstuk werd beloond met een enorm applaus.","Tijdens het experiment veranderde de vloeistof van kleur.","De kampioen fietste als eerste over de finish.","Onze meester organiseert elk jaar een spannende speurtocht.","De machine maakt honderden flesjes per minuut.","Aan de horizon zagen we de zon langzaam ondergaan.","In de bibliotheek moet je zachtjes praten."],
+  "Zinnen · groep 7": ["De regering besloot om meer geld aan onderwijs te besteden.","Ondanks de tegenslagen bleef het team enthousiast doortrainen.","De journalist schreef een uitgebreid artikel over de verkiezingen.","Met een telescoop bestudeerden wij de sterren en planeten.","De temperatuur daalde die nacht tot ver onder het vriespunt.","De vrijwilligers ruimden samen het vervuilde strand op.","Volgens de weersverwachting wordt het morgen buitengewoon warm.","Zorgvuldig noteerde de leerling alle resultaten van het onderzoek.","In het restaurant bestelde mijn vader een ingewikkeld gerecht.","De uitvinding veranderde het dagelijks leven van miljoenen mensen."],
+  "Zinnen · groep 8": ["De klimaatverandering heeft grote gevolgen voor de natuur op aarde.","Dankzij zijn doorzettingsvermogen behaalde hij een fantastisch resultaat.","De vertegenwoordiger legde het ingewikkelde voorstel geduldig uit.","Op de tentoonstelling bewonderden de bezoekers indrukwekkende kunstwerken.","De wetenschappelijke ontdekking werd wereldwijd enthousiast ontvangen.","Ondanks de onvoorstelbare drukte verliep de organisatie soepel.","De gemeenteraad discussieerde urenlang over de duurzaamheidsplannen.","Met een gedetailleerde kaart vonden zij de verborgen schat.","De hoofdrolspeler zette een geloofwaardige vertolking neer.","Verantwoordelijkheid nemen betekent je eigen fouten durven toegeven."]
+};
 const FOCUS = {
+  "Letters & klanken · groep 3":"Losse letters en klankgroepen snel herkennen (aa, ei, eu, sch...).",
   "AVI Start · groep 3":"Korte klankzuivere woorden (mkm): eerst goed verklanken.",
   "AVI M3 · groep 3":"Woorden met medeklinkercombinaties (kl-, st-, tr-, pl-).",
   "AVI E3 · groep 3":"Moeilijkere clusters en woordeinden (schr-, -cht, -ngst).",
@@ -253,95 +292,108 @@ const FOCUS = {
   "AVI M7 · groep 7":"Lange, meerlettergrepige woorden vlot en vloeiend lezen.",
   "AVI Plus · groep 8":"Complexe en vreemde woorden; vlot en vloeiend lezen.",
   "Medeklinkerclusters":"Woorden met stapelmedeklinkers (schr-, str-, -cht, -ngst).",
-  "Open en gesloten lettergrepen":"bo-men vs. bom-men: let op de klank en het aantal medeklinkers.",
+  "Open en gesloten lettergrepen":"bo-men vs. bom-men: let op de klank en de medeklinkers.",
   "Verkleinwoorden (-je / -tje)":"Woorden op -je, -tje, -pje.",
   "-ng / -nk":"Het verschil tussen de -ng- en -nk-klank.",
   "eer / oor / eur":"Woorden met de klankgroepen eer, oor en eur.",
   "aai / ooi / oei":"Woorden met aai, ooi en oei.",
-  "-ig / -lijk":"Woordeinden -ig en -lijk (die je vaak anders hoort dan schrijft).",
+  "-ig / -lijk":"Woordeinden -ig en -lijk.",
   "-tie / -isch":"Woorden op -tie (tsie) en -isch (ies).",
   "Samenstellingen":"Lange woorden opgebouwd uit twee woorden.",
-  "__eigen__":"Je eigen woorden."
+  "Zinnen · groep 3":"Korte zinnen vloeiend lezen; let op de punt.",
+  "Zinnen · groep 4":"Zinnen met een beetje meer woorden vloeiend lezen.",
+  "Zinnen · groep 5":"Langere zinnen met leestekens vloeiend lezen.",
+  "Zinnen · groep 6":"Samengestelde zinnen met begrip lezen.",
+  "Zinnen · groep 7":"Lange zinnen met moeilijke woorden vloeiend lezen.",
+  "Zinnen · groep 8":"Complexe zinnen vloeiend en met de juiste intonatie lezen.",
+  "__eigen__":"Je eigen woorden of zinnen."
 };
 
-// ---- selectbox ----
-const sel = document.getElementById('lijst');
-function optGroep(titel, obj){
+const $=id=>document.getElementById(id);
+const sel=$('lijst'), woordEl=$('woord'), voortgangEl=$('voortgang'), hintEl=$('hint'), balkje=$('balkje');
+const startKnop=$('startKnop'), autoChip=$('auto'), husselChip=$('hussel'), tempoEl=$('tempo');
+const leesletterKnop=$('leesletterKnop'), hoofdKnop=$('hoofdKnop'), digibordKnop=$('digibordKnop');
+
+let modus="flitsen", basis=[], lijst=[], idx=0, timer=null, eigenWoorden=[], pakket="A";
+let raceTimer=null, raceSec=60, lastWoordSel=null, lastZinSel=null;
+
+const isAuto=()=>autoChip.classList.contains('aan');
+const isHussel=()=>husselChip.classList.contains('aan');
+const isHoofd=()=>hoofdKnop.classList.contains('aan');
+const isZin=()=>modus==='zinnen';
+const vorm=w=>isHoofd()?w.toUpperCase():w;
+
+function optGroep(titel,obj){
   const g=document.createElement('optgroup'); g.label=titel;
   for(const n in obj){ const o=document.createElement('option'); o.value=n; o.textContent=n; g.appendChild(o); }
   sel.appendChild(g);
 }
-optGroep("AVI-niveaus", NIVEAUS);
-optGroep("Leescategorieën", CATEGORIEEN);
-const gE=document.createElement('optgroup'); gE.label="Eigen";
-const oE=document.createElement('option'); oE.value="__eigen__"; oE.textContent="✏️ Eigen woorden"; gE.appendChild(oE); sel.appendChild(gE);
-const selecteerbaar=[...sel.options].filter(o=>o.value!=="__eigen__").map(o=>o.value);
+function addEigen(){
+  const g=document.createElement('optgroup'); g.label="Eigen";
+  const o=document.createElement('option'); o.value="__eigen__"; o.textContent="✏️ Eigen woorden/zinnen";
+  g.appendChild(o); sel.appendChild(g);
+}
+function vulSelect(){
+  sel.innerHTML='';
+  if(isZin()){
+    optGroep("Zinnen (vloeiend lezen)", ZINNEN); addEigen();
+    sel.value=(lastZinSel && ZINNEN[lastZinSel])?lastZinSel:Object.keys(ZINNEN)[0];
+  } else {
+    optGroep("Letters & klanken", LETTERS_GROEP);
+    optGroep("AVI-niveaus", NIVEAUS);
+    optGroep("Leescategorieën", CATEGORIEEN);
+    addEigen();
+    sel.value=(lastWoordSel && (LETTERS_GROEP[lastWoordSel]||NIVEAUS[lastWoordSel]||CATEGORIEEN[lastWoordSel]))?lastWoordSel:"AVI Start · groep 3";
+  }
+}
 
-// ---- state ----
-let modus="flitsen", basis=[], lijst=[], idx=0, timer=null, eigenWoorden=[], pakket="A";
-let raceTimer=null, raceSec=60;
-const $=id=>document.getElementById(id);
-const woordEl=$('woord'), voortgangEl=$('voortgang'), hintEl=$('hint'), balkje=$('balkje');
-const startKnop=$('startKnop'), autoChip=$('auto'), husselChip=$('hussel'), tempoEl=$('tempo');
-const leesletterKnop=$('leesletterKnop'), hoofdKnop=$('hoofdKnop');
-const isAuto=()=>autoChip.classList.contains('aan');
-const isHussel=()=>husselChip.classList.contains('aan');
-const isHoofd=()=>hoofdKnop.classList.contains('aan');
-const vorm=w=>isHoofd()?w.toUpperCase():w;
-
-// ---- instellingen onthouden ----
 function bewaar(){
   try{ localStorage.setItem('leesflitser', JSON.stringify({
     lijst:sel.value, tempo:tempoEl.value, auto:isAuto(), hussel:isHussel(),
-    leesletter:document.body.classList.contains('leesletter'), hoofd:isHoofd(), modus, pakket
+    leesletter:document.body.classList.contains('leesletter'), hoofd:isHoofd(),
+    digibord:document.body.classList.contains('digibord'), modus, pakket
   })); }catch(e){}
 }
 function herstel(){
   let s; try{ s=JSON.parse(localStorage.getItem('leesflitser')||'{}'); }catch(e){ s={}; }
-  if(s.lijst && (NIVEAUS[s.lijst]||CATEGORIEEN[s.lijst])) sel.value=s.lijst;
-  if(s.tempo){ tempoEl.value=s.tempo; }
+  if(s.tempo) tempoEl.value=s.tempo;
   if(s.auto===false) autoChip.classList.remove('aan');
   if(s.hussel===false) husselChip.classList.remove('aan');
   if(s.leesletter){ document.body.classList.add('leesletter'); leesletterKnop.classList.add('aan'); }
   if(s.hoofd){ hoofdKnop.classList.add('aan'); }
+  if(s.digibord){ document.body.classList.add('digibord'); digibordKnop.classList.add('aan'); }
   if(s.pakket==="B") pakket="B";
-  if(s.modus==="racelezen") zetModus("racelezen");
+  if(s.modus==="zinnen"||s.modus==="racelezen") modus=s.modus;
+  if(s.lijst){ if(modus==='zinnen') lastZinSel=s.lijst; else lastWoordSel=s.lijst; }
 }
 
-// ---- data ----
 function isNiveau(){ return !!NIVEAUS[sel.value]; }
 function splitPakket(arr){ const m=Math.ceil(arr.length/2); return {A:arr.slice(0,m), B:arr.slice(m)}; }
 function updatePakketUI(){
-  $('pakketveld').style.display = isNiveau() ? 'flex' : 'none';
-  $('pakA').classList.toggle('aan', pakket==='A');
-  $('pakB').classList.toggle('aan', pakket==='B');
+  $('pakketveld').style.display=(isNiveau() && !isZin())?'flex':'none';
+  $('pakA').classList.toggle('aan', pakket==='A'); $('pakB').classList.toggle('aan', pakket==='B');
 }
 function haalBasis(){
   const n=sel.value;
   if(n==="__eigen__") return eigenWoorden.slice();
+  if(isZin()) return (ZINNEN[n]||[]).slice();
+  if(LETTERS_GROEP[n]) return LETTERS_GROEP[n].slice();
   if(NIVEAUS[n]) return splitPakket(NIVEAUS[n])[pakket].slice();
   if(CATEGORIEEN[n]) return CATEGORIEEN[n].slice();
   return [];
 }
 function husselArr(a){ for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; }
-function toonFocus(){
-  const f=FOCUS[sel.value];
-  const el=$('niveaufocus');
-  if(f){ el.style.display='block'; el.innerHTML='<b>Focus:</b> '+f; }
-  else { el.style.display='none'; }
-}
+function toonFocus(){ const f=FOCUS[sel.value], el=$('niveaufocus'); if(f){ el.style.display='block'; el.innerHTML='<b>Focus:</b> '+f; } else el.style.display='none'; }
+
 function laadLijst(reset=true){
-  basis=haalBasis();
-  toonFocus();
+  basis=haalBasis(); toonFocus();
   lijst=isHussel()?husselArr(basis.slice()):basis.slice();
   if(reset) idx=0;
   stop(); verbergKlaar();
-  if(modus==="racelezen"){ renderRace(); raceStop(true); return; }
+  if(modus==="racelezen"){ renderRace(); return; }
   if(!lijst.length){ woordEl.textContent="Geen woorden"; voortgangEl.textContent=""; return; }
   toon();
 }
-
-// ---- flitsen ----
 function toon(){
   if(!lijst.length) return;
   woordEl.style.opacity=0;
@@ -349,110 +401,100 @@ function toon(){
   voortgangEl.textContent=(idx+1)+" / "+lijst.length;
   if(timer && isAuto()) animeerBalk(parseFloat(tempoEl.value));
 }
-function animeerBalk(sec){
-  balkje.style.transition='none'; balkje.style.width='0%';
-  requestAnimationFrame(()=>{ balkje.style.transition='width '+sec+'s linear'; balkje.style.width='100%'; });
-}
+function animeerBalk(sec){ balkje.style.transition='none'; balkje.style.width='0%';
+  requestAnimationFrame(()=>{ balkje.style.transition='width '+sec+'s linear'; balkje.style.width='100%'; }); }
 function resetBalk(){ balkje.style.transition='none'; balkje.style.width='0%'; }
 function tick(){ if(idx<lijst.length-1){ idx++; toon(); } else { stop(); toonKlaar(); } }
-function start(){
-  if(!lijst.length) return; verbergKlaar();
+function start(){ if(!lijst.length) return; verbergKlaar();
   if(isAuto()){ stop(); timer=setInterval(tick, parseFloat(tempoEl.value)*1000);
-    startKnop.textContent="⏸ Pauze"; animeerBalk(parseFloat(tempoEl.value)); }
-  else { volgende(); }
+    startKnop.textContent="⏸ Pauze"; $('fsStart').textContent="⏸"; animeerBalk(parseFloat(tempoEl.value)); }
+  else volgende();
 }
-function stop(){ if(timer){clearInterval(timer); timer=null;} startKnop.textContent="▶ Start"; resetBalk(); }
+function stop(){ if(timer){clearInterval(timer); timer=null;} startKnop.textContent="▶ Start"; $('fsStart').textContent="▶"; resetBalk(); }
 function toggleStart(){ if(timer) stop(); else start(); }
 function volgende(){ if(!lijst.length) return; if(idx<lijst.length-1){ idx++; toon(); } else { stop(); toonKlaar(); } }
 function vorige(){ if(!lijst.length) return; idx=Math.max(0,idx-1); toon(); }
-function toonKlaar(){ $('klaar').classList.add('aan'); }
+function toonKlaar(){ $('klaarTitel').textContent=isZin()?"Alle zinnen gelezen! 🎉":"Ronde klaar! 🎉"; $('klaar').classList.add('aan'); }
 function verbergKlaar(){ $('klaar').classList.remove('aan'); }
 
-// ---- racelezen ----
 function renderRace(){
   const woorden=basis.length?basis:haalBasis();
   $('racegrid').innerHTML=woorden.map(w=>'<div class="rw">'+vorm(w)+'</div>').join('');
+  raceStop(true);
 }
-function updateTijd(){
-  const m=Math.floor(raceSec/60), s=raceSec%60;
-  $('tijd').textContent=m+":"+(s<10?"0":"")+s;
-  $('tijd').classList.toggle('rood', raceSec<=10);
-}
-function raceStartFn(){
-  if(raceTimer){ raceStop(); return; }
-  raceTimer=setInterval(()=>{
-    raceSec--; updateTijd();
-    if(raceSec<=0){ raceStop(); $('tijd').textContent="Tijd!"; }
-  },1000);
+function updateTijd(){ const m=Math.floor(raceSec/60), s=raceSec%60;
+  $('tijd').textContent=m+":"+(s<10?"0":"")+s; $('tijd').classList.toggle('rood', raceSec<=10); }
+function raceStartFn(){ if(raceTimer){ raceStop(); return; }
+  raceTimer=setInterval(()=>{ raceSec--; updateTijd(); if(raceSec<=0){ raceStop(); $('tijd').textContent="Tijd!"; piep(); } },1000);
   $('raceStart').textContent="⏸ Pauze";
 }
-function raceStop(volledig){
-  if(raceTimer){ clearInterval(raceTimer); raceTimer=null; }
-  $('raceStart').textContent="▶ Start (1 min)";
-  if(volledig){ raceSec=60; updateTijd(); $('tijd').classList.remove('rood'); }
-}
+function raceStop(vol){ if(raceTimer){ clearInterval(raceTimer); raceTimer=null; } $('raceStart').textContent="▶ Start (1 min)";
+  if(vol){ raceSec=60; updateTijd(); $('tijd').classList.remove('rood'); } }
+function piep(){ try{ const c=new (window.AudioContext||window.webkitAudioContext)();
+  const o=c.createOscillator(), g=c.createGain(); o.connect(g); g.connect(c.destination);
+  o.frequency.value=880; g.gain.value=.15; o.start(); setTimeout(()=>{o.stop(); c.close();},450); }catch(e){} }
 
-// ---- modus ----
-function zetModus(m){
-  modus=m; stop();
-  $('modeFlits').classList.toggle('aan', m==="flitsen");
-  $('modeRace').classList.toggle('aan', m==="racelezen");
-  $('flitsview').style.display = m==="flitsen"?"block":"none";
-  $('raceview').style.display = m==="racelezen"?"block":"none";
-  $('race').classList.toggle('aan', m==="racelezen");
-  $('flitscontrols').style.display = m==="flitsen"?"flex":"none";
-  if(m==="racelezen"){ renderRace(); raceStop(true); } else { verbergKlaar(); toon(); }
-  bewaar();
+function applyModusUI(){
+  $('modeFlits').classList.toggle('aan', modus==='flitsen');
+  $('modeZin').classList.toggle('aan', modus==='zinnen');
+  $('modeRace').classList.toggle('aan', modus==='racelezen');
+  $('flitsview').style.display = modus==='racelezen'?'none':'block';
+  $('raceview').style.display = modus==='racelezen'?'block':'none';
+  $('flitscontrols').style.display = modus==='racelezen'?'none':'flex';
+  document.body.classList.toggle('zinmodus', modus==='zinnen');
+  hintEl.textContent=isAuto()?"Klik hier of druk op spatie om te starten":"Klik hier of druk op spatie voor het volgende";
 }
+function zetModus(m){ modus=m; applyModusUI(); vulSelect();
+  $('eigenvak').classList.toggle('aan', sel.value==="__eigen__");
+  updatePakketUI(); laadLijst(true); bewaar(); }
 
-// ---- events ----
+/* events */
+$('modeFlits').addEventListener('click', ()=>zetModus('flitsen'));
+$('modeZin').addEventListener('click', ()=>zetModus('zinnen'));
+$('modeRace').addEventListener('click', ()=>zetModus('racelezen'));
 sel.addEventListener('change', ()=>{
+  if(isZin()) lastZinSel=sel.value; else lastWoordSel=sel.value;
   $('eigenvak').classList.toggle('aan', sel.value==="__eigen__");
   updatePakketUI(); laadLijst(true); bewaar();
 });
 $('pakA').addEventListener('click', ()=>{ pakket='A'; updatePakketUI(); laadLijst(true); bewaar(); });
 $('pakB').addEventListener('click', ()=>{ pakket='B'; updatePakketUI(); laadLijst(true); bewaar(); });
 husselChip.addEventListener('click', ()=>{ husselChip.classList.toggle('aan'); laadLijst(false); bewaar(); });
-autoChip.addEventListener('click', ()=>{
-  autoChip.classList.toggle('aan'); $('tempoveld').style.opacity=isAuto()?1:.4; stop();
-  hintEl.textContent=isAuto()?"Klik hier of druk op spatie om te starten":"Klik hier of druk op spatie voor het volgende woord";
-  bewaar();
-});
-tempoEl.addEventListener('input', ()=>{
-  $('tempoval').textContent=parseFloat(tempoEl.value).toFixed(1).replace('.',',')+" sec";
-  if(timer) start(); bewaar();
-});
-leesletterKnop.addEventListener('click', ()=>{
-  leesletterKnop.classList.toggle('aan');
-  document.body.classList.toggle('leesletter', leesletterKnop.classList.contains('aan')); bewaar();
-});
-hoofdKnop.addEventListener('click', ()=>{
-  hoofdKnop.classList.toggle('aan');
-  if(modus==="racelezen") renderRace(); else toon(); bewaar();
-});
-$('modeFlits').addEventListener('click', ()=>zetModus("flitsen"));
-$('modeRace').addEventListener('click', ()=>zetModus("racelezen"));
+autoChip.addEventListener('click', ()=>{ autoChip.classList.toggle('aan'); $('tempoveld').style.opacity=isAuto()?1:.4; stop();
+  hintEl.textContent=isAuto()?"Klik hier of druk op spatie om te starten":"Klik hier of druk op spatie voor het volgende"; bewaar(); });
+tempoEl.addEventListener('input', ()=>{ $('tempoval').textContent=parseFloat(tempoEl.value).toFixed(1).replace('.',',')+" sec"; if(timer) start(); bewaar(); });
+leesletterKnop.addEventListener('click', ()=>{ leesletterKnop.classList.toggle('aan'); document.body.classList.toggle('leesletter', leesletterKnop.classList.contains('aan')); bewaar(); });
+hoofdKnop.addEventListener('click', ()=>{ hoofdKnop.classList.toggle('aan'); if(modus==='racelezen') renderRace(); else toon(); bewaar(); });
+digibordKnop.addEventListener('click', ()=>{ digibordKnop.classList.toggle('aan'); document.body.classList.toggle('digibord', digibordKnop.classList.contains('aan')); bewaar(); });
 
 startKnop.addEventListener('click', toggleStart);
 $('volgendeKnop').addEventListener('click', ()=>{ stop(); volgende(); });
 $('vorigeKnop').addEventListener('click', ()=>{ stop(); verbergKlaar(); vorige(); });
 $('flits').addEventListener('click', (e)=>{
-  if(e.target.closest('.klaar')) return;
+  if(e.target.closest('.klaar')||e.target.closest('.fsbar')) return;
+  if(document.fullscreenElement){
+    const r=$('flits').getBoundingClientRect();
+    if(e.clientX-r.left < r.width*0.3){ stop(); vorige(); }
+    else { if(isAuto()) toggleStart(); else volgende(); }
+    return;
+  }
   if(isAuto()) toggleStart(); else volgende();
 });
 $('opnieuwKnop').addEventListener('click', (e)=>{ e.stopPropagation(); verbergKlaar(); laadLijst(true); start(); });
-$('volgniveauKnop').addEventListener('click', (e)=>{
-  e.stopPropagation(); verbergKlaar();
-  let p=selecteerbaar.indexOf(sel.value); p=(p+1)%selecteerbaar.length;
-  sel.value=selecteerbaar[p]; laadLijst(true); bewaar();
+$('volgniveauKnop').addEventListener('click', (e)=>{ e.stopPropagation(); verbergKlaar();
+  const opts=[...sel.options].filter(o=>o.value!=="__eigen__").map(o=>o.value);
+  let p=opts.indexOf(sel.value); p=(p+1)%opts.length; sel.value=opts[p];
+  if(isZin()) lastZinSel=sel.value; else lastWoordSel=sel.value;
+  updatePakketUI(); laadLijst(true); bewaar();
 });
-$('grootKnop').addEventListener('click', ()=>{
-  const f=$('flits');
-  if(!document.fullscreenElement){ f.requestFullscreen&&f.requestFullscreen(); }
-  else { document.exitFullscreen&&document.exitFullscreen(); }
-});
+$('grootKnop').addEventListener('click', ()=>{ const f=$('flits');
+  if(!document.fullscreenElement){ f.requestFullscreen&&f.requestFullscreen(); } else { document.exitFullscreen&&document.exitFullscreen(); } });
+$('fsVorige').addEventListener('click',(e)=>{ e.stopPropagation(); stop(); verbergKlaar(); vorige(); });
+$('fsVolgende').addEventListener('click',(e)=>{ e.stopPropagation(); stop(); volgende(); });
+$('fsStart').addEventListener('click',(e)=>{ e.stopPropagation(); toggleStart(); });
+$('fsSluit').addEventListener('click',(e)=>{ e.stopPropagation(); document.exitFullscreen&&document.exitFullscreen(); });
 document.addEventListener('keydown', (e)=>{
-  if(modus!=="flitsen") return;
+  if(modus==='racelezen') return;
   if(e.code==="Space"){ e.preventDefault(); if(isAuto()) toggleStart(); else volgende(); }
   else if(e.code==="ArrowRight"){ stop(); volgende(); }
   else if(e.code==="ArrowLeft"){ stop(); verbergKlaar(); vorige(); }
@@ -463,25 +505,27 @@ $('raceReset').addEventListener('click', ()=>raceStop(true));
 $('eigenKnop').addEventListener('click', ()=>$('eigenvak').classList.toggle('aan'));
 $('eigentoepassen').addEventListener('click', ()=>{
   const t=$('eigeninvoer').value;
-  eigenWoorden=t.split(/[\s,;\n]+/).map(s=>s.trim()).filter(s=>s.length>0);
-  if(!eigenWoorden.length){ alert("Vul eerst een paar woorden in."); return; }
-  sel.value="__eigen__"; $('eigenvak').classList.add('aan'); laadLijst(true); bewaar();
+  eigenWoorden = isZin() ? t.split(/\n+/).map(s=>s.trim()).filter(s=>s.length>0)
+                         : t.split(/[\s,;\n]+/).map(s=>s.trim()).filter(s=>s.length>0);
+  if(!eigenWoorden.length){ alert("Vul eerst iets in."); return; }
+  sel.value="__eigen__"; $('eigenvak').classList.add('aan'); updatePakketUI(); laadLijst(true); bewaar();
 });
 $('printKnop').addEventListener('click', ()=>{
-  const naam=sel.value==="__eigen__"?"Eigen woorden":sel.value;
-  const woorden=basis.length?basis:haalBasis();
-  const rijen=woorden.map((w,i)=>'<tr><td class="nr">'+(i+1)+'</td><td>'+vorm(w)+'</td><td class="rondes">• • •</td></tr>').join('');
-  $('kaartprint').innerHTML=
-    '<h2>Leeskaart · '+naam+'</h2>'+
-    '<div class="instr">Racelezen: lees hardop zo veel mogelijk woorden in 1 minuut. Doe het 3× en zet elke ronde een streepje bij je laatste woord.</div>'+
-    '<div class="naamrij">Naam: <span></span> &nbsp; Datum: <span></span></div>'+
-    '<table>'+rijen+'</table>';
+  const naam=sel.value==="__eigen__"?"Eigen lijst":sel.value;
+  const items=basis.length?basis:haalBasis();
+  const zin=isZin();
+  const instr = zin ? "Lees de zinnen rustig en vloeiend hardop. Let op de leestekens."
+                    : "Racelezen: lees zo veel mogelijk woorden in 1 minuut. Doe het 3× en zet elke ronde een streepje.";
+  const rijen=items.map((w,i)=>'<tr><td class="nr">'+(i+1)+'</td><td>'+vorm(w)+'</td>'+(zin?'':'<td class="rondes">• • •</td>')+'</tr>').join('');
+  $('kaartprint').innerHTML='<h2>Leeskaart · '+naam+'</h2><div class="instr">'+instr+'</div>'+
+    '<div class="naamrij">Naam: <span></span> &nbsp; Datum: <span></span></div><table>'+rijen+'</table>';
   window.print();
 });
 
-// ---- init ----
-$('tempoveld').style.opacity=1;
+/* init */
 herstel();
+applyModusUI();
+vulSelect();
 $('tempoval').textContent=parseFloat(tempoEl.value).toFixed(1).replace('.',',')+" sec";
 $('tempoveld').style.opacity=isAuto()?1:.4;
 $('eigenvak').classList.toggle('aan', sel.value==="__eigen__");
