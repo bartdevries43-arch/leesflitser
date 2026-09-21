@@ -37,4 +37,3 @@ Privacy: alle onderzoeksgegevens blijven in de browser van het apparaat
 Open `index.html` in de browser. Klaar.
 
 Aansluitend bij de opbouw van methodes als Estafette en Blink Lezen (AVI-lijn).
-Gemaakt door Bart de Vries, met hulp van AI (Claude) bij het programmeren en het uitzoeken van bronnen.

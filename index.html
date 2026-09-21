@@ -10,19 +10,19 @@
 <style>
   *{margin:0; padding:0; box-sizing:border-box;}
   :root{
-    --ink:#212a35; --muted:#6a7683; --accent:#7c5cff; --accent2:#2fa37a;
-    --line:rgba(124,92,255,.20); --line-2:rgba(124,92,255,.32);
-    --card:rgba(255,255,255,.86); --card-2:#ffffff; --veld:#ffffff;
-    --shadow:0 18px 44px rgba(70,58,120,.12);
+    --ink:#1c2433; --muted:#667085; --accent:#4f46e5; --accent2:#0e9f9e;
+    --line:rgba(79,70,229,.13); --line-2:rgba(79,70,229,.25);
+    --card:rgba(255,255,255,.92); --card-2:#ffffff; --veld:#ffffff;
+    --shadow:0 14px 38px rgba(31,41,90,.09);
     --radius:22px;
     --bg:
-      radial-gradient(circle at 10% 6%, rgba(178,236,213,.55), transparent 460px),
-      radial-gradient(circle at 92% 8%, rgba(206,188,255,.62), transparent 520px),
-      radial-gradient(circle at 50% 112%, rgba(178,236,213,.30), transparent 560px),
-      #eef1f7;
+      radial-gradient(circle at 6% 0%, rgba(14,159,158,.14), transparent 440px),
+      radial-gradient(circle at 96% 4%, rgba(79,70,229,.16), transparent 500px),
+      radial-gradient(circle at 50% 110%, rgba(14,159,158,.10), transparent 560px),
+      #f3f5fb;
   }
   body.digibord{
-    --ink:#f2f6fb; --muted:#9fb0c2; --accent:#a68bff; --accent2:#4fd3a0;
+    --ink:#f2f6fb; --muted:#9fb0c2; --accent:#8b87ff; --accent2:#3fd0c9;
     --line:rgba(255,255,255,.14); --line-2:rgba(255,255,255,.24);
     --card:rgba(30,38,52,.92); --card-2:#1c2430; --veld:#232d3c;
     --shadow:0 18px 44px rgba(0,0,0,.45);
@@ -34,8 +34,8 @@
     color:var(--ink); min-height:100vh; background:var(--bg); background-attachment:fixed;}
   h1{font-family:"Baloo 2",system-ui,sans-serif; font-weight:800;}
   .app{max-width:1040px; margin:0 auto; padding:24px 18px 60px;}
-  .eyebrow{color:var(--accent2); font-weight:800; text-transform:uppercase; letter-spacing:1.5px; font-size:12.5px;}
-  h1{font-size:clamp(32px,5vw,50px); line-height:1.02; margin:4px 0 4px;}
+  .eyebrow{color:var(--accent2); font-weight:800; text-transform:uppercase; letter-spacing:1.4px; font-size:12px;}
+  h1{font-size:clamp(32px,5vw,48px); line-height:1.02; margin:2px 0 0;}
   .lead{color:var(--muted); font-size:15.5px; max-width:640px;}
 
   .card{background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
@@ -69,7 +69,7 @@
   .lettergrootte #wszlabel{font-size:13px; font-weight:800; color:var(--muted); min-width:44px; text-align:center;}
 
   .niveaufocus{margin-top:12px; padding:10px 16px; font-size:14px; color:var(--ink);
-    background:var(--card); border:1px dashed var(--line-2); border-radius:14px;}
+    background:rgba(14,159,158,.08); border:1px solid rgba(14,159,158,.22); border-radius:14px;}
   .niveaufocus b{color:var(--accent2);}
 
   /* Flitsen / Zinnen */
@@ -117,7 +117,8 @@
   button.btn{font-family:inherit; font-size:16px; font-weight:800; border:1px solid var(--line-2); cursor:pointer;
     padding:13px 20px; border-radius:15px; background:var(--veld); color:var(--ink); transition:transform .07s ease;}
   button.btn:hover{transform:translateY(-2px);}
-  button.btn.primair{background:var(--accent); color:#fff; border-color:transparent; font-size:19px; padding:15px 30px;}
+  button.btn.primair{background:linear-gradient(120deg,var(--accent),#3b5bdb); color:#fff; border-color:transparent; font-size:19px; padding:15px 30px;
+    box-shadow:0 8px 20px rgba(79,70,229,.25);}
 
   .eigen{display:none; margin-top:14px; padding:16px 18px;}
   .eigen.aan{display:block;}
@@ -128,19 +129,45 @@
   body.leesletter .woord, body.leesletter .rw, body.leesletter .kaartprint td{
     font-family:"Andika","Comic Sans MS","Comic Neue",sans-serif;}
 
-  /* Hoofdtabs en onderzoek */
-  .hoofdtabs{margin-top:16px;}
-  .privacy{margin-top:14px; padding:12px 16px; font-size:14px;}
-  .subtabs{margin-top:14px; flex-wrap:wrap;}
+  /* Kop */
+  .kop{position:relative; overflow:hidden; border-radius:26px; padding:24px 26px 20px; color:#fff;
+    background:linear-gradient(125deg,#4f46e5 0%,#3b5bdb 48%,#0e9f9e 100%); box-shadow:0 18px 40px rgba(59,91,219,.26);}
+  .kop::before,.kop::after{content:""; position:absolute; border-radius:50%; background:rgba(255,255,255,.08); pointer-events:none;}
+  .kop::before{width:260px; height:260px; right:-70px; top:-90px;}
+  .kop::after{width:160px; height:160px; right:120px; bottom:-100px;}
+  .kop-merk{display:flex; align-items:center; gap:14px; position:relative;}
+  .logo{flex:none; width:56px; height:56px; border-radius:17px; display:flex; align-items:center; justify-content:center;
+    font-size:28px; background:rgba(255,255,255,.18); box-shadow:inset 0 0 0 1px rgba(255,255,255,.32);}
+  .kop .eyebrow{color:rgba(255,255,255,.82);}
+  .kop h1{color:#fff;}
+  .kop .lead{color:rgba(255,255,255,.9); margin-top:12px; position:relative;}
+  .kop .hoofdtabs{margin-top:18px; position:relative; background:rgba(255,255,255,.15); border-color:rgba(255,255,255,.28);}
+  .kop .hoofdtabs button{color:#fff; font-size:15px; padding:10px 18px;}
+  .kop .hoofdtabs button.aan{background:#fff; color:#4f46e5; box-shadow:0 4px 12px rgba(20,20,60,.18);}
+  body.digibord .kop{background:linear-gradient(125deg,#2b2677 0%,#1d3a78 48%,#0b5e5d 100%);}
+  body.digibord .kop .hoofdtabs button.aan{color:#2b2677;}
+
+  /* Onderzoek */
+  .privacy{margin-top:16px; padding:12px 16px; font-size:14px; display:flex; gap:12px; align-items:center;}
+  .privacy .slot{flex:none; width:36px; height:36px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    background:rgba(14,159,158,.14); font-size:17px;}
+  .subtabs{margin-top:14px; display:flex; max-width:100%; overflow-x:auto; scrollbar-width:none;}
+  .subtabs::-webkit-scrollbar{display:none;}
+  .subtabs button{white-space:nowrap;}
   .paneel{margin-top:14px; padding:18px 20px;}
-  .ptitel{font-family:"Baloo 2",system-ui,sans-serif; font-size:24px; margin-bottom:6px;}
+  .ptitel{font-family:"Baloo 2",system-ui,sans-serif; font-size:25px; margin-bottom:6px; line-height:1.15;}
   .pkop{font-size:13px; text-transform:uppercase; letter-spacing:.6px; color:var(--muted); margin:18px 0 8px;}
   .klein-tekst{font-size:13px; color:var(--muted);}
   .stappen{display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-bottom:14px;}
-  .stap{padding:6px 12px; border-radius:999px; font-weight:800; font-size:13px; background:var(--veld);
-    border:1px solid var(--line-2); color:var(--muted);}
-  .stap.aan{background:var(--accent); color:#fff; border-color:transparent;}
-  .stap.gedaan{color:var(--accent2);}
+  .stap{display:inline-flex; align-items:center; gap:8px; padding:5px 14px 5px 5px; border-radius:999px; font-weight:800;
+    font-size:13px; background:var(--veld); border:1px solid var(--line-2); color:var(--muted);}
+  .stap i{font-style:normal; flex:none; width:24px; height:24px; border-radius:50%; display:inline-flex; align-items:center;
+    justify-content:center; background:var(--line); color:var(--muted); font-size:12px;}
+  .stap.aan{background:var(--accent); color:#fff; border-color:transparent; box-shadow:0 6px 16px rgba(79,70,229,.25);}
+  .stap.aan i{background:#fff; color:var(--accent);}
+  .stap.gedaan{color:var(--accent2); border-color:rgba(14,159,158,.35);}
+  .stap.gedaan i{background:var(--accent2); color:transparent; position:relative;}
+  .stap.gedaan i::after{content:"✓"; color:#fff; position:absolute; font-size:13px;}
   .klokken{margin-left:auto; font-weight:800; color:var(--muted); font-variant-numeric:tabular-nums;}
   .rij{display:flex; flex-wrap:wrap; gap:12px 18px; align-items:flex-end; margin:12px 0;}
   .codes{display:flex; flex-wrap:wrap; gap:8px; align-items:center;}
@@ -157,8 +184,8 @@
     padding:22px; background:var(--card-2); border:1px solid var(--line); border-radius:16px; margin:12px 0;}
   .tijd.klein{font-size:34px;}
   .stats{display:grid; grid-template-columns:repeat(auto-fit,minmax(145px,1fr)); gap:10px; margin:10px 0 16px;}
-  .stat{background:var(--veld); border:1px solid var(--line-2); border-radius:14px; padding:12px 14px;}
-  .stat b{display:block; font-size:24px; font-family:"Baloo 2",system-ui,sans-serif; line-height:1.1;}
+  .stat{background:var(--veld); border:1px solid var(--line); border-radius:16px; padding:13px 15px; box-shadow:0 4px 14px rgba(31,41,90,.04);}
+  .stat b{display:block; font-size:26px; font-family:"Baloo 2",system-ui,sans-serif; line-height:1.1; color:var(--accent);}
   .stat span{font-size:11.5px; color:var(--muted); font-weight:800; text-transform:uppercase; letter-spacing:.4px;}
   .tabwrap{overflow-x:auto;}
   table.tab{width:100%; border-collapse:collapse; font-size:14px;}
@@ -183,11 +210,20 @@
   .catbalk{flex:1; height:12px; background:var(--veld); border:1px solid var(--line); border-radius:8px; overflow:hidden;}
   .catbalk span{display:block; height:100%; background:#e2534a;}
   .catgetal{width:140px; color:var(--muted); font-size:13px;}
-  .info{background:rgba(47,163,122,.10); border:1px solid rgba(47,163,122,.35); border-radius:12px; padding:10px 14px; font-size:14px; margin:10px 0;}
+  .info{background:rgba(14,159,158,.09); border:1px solid rgba(14,159,158,.28); border-radius:14px; padding:11px 15px; font-size:14px; margin:10px 0;}
   .let{background:rgba(226,83,74,.10); border:1px solid rgba(226,83,74,.35); border-radius:12px; padding:10px 14px; font-size:14px; margin:8px 0;}
-  .waarom h3{font-family:"Baloo 2",system-ui,sans-serif; font-size:19px; margin:18px 0 4px;}
-  .waarom p{margin:6px 0; font-size:15px; line-height:1.6; max-width:780px;}
-  .waarom .bron{font-size:13.5px; padding-left:22px; text-indent:-22px; margin:7px 0;}
+  .waarom > p{margin:6px 0 4px; font-size:15px; line-height:1.6; max-width:760px; color:var(--muted);}
+  .redenen{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:14px; margin-top:16px;}
+  .reden{background:var(--veld); border:1px solid var(--line); border-radius:18px; padding:16px 18px 14px; box-shadow:0 4px 14px rgba(31,41,90,.04);}
+  .reden .nr{display:inline-flex; width:30px; height:30px; border-radius:10px; align-items:center; justify-content:center;
+    background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#fff; font-weight:800; font-size:14px;}
+  .reden h3{font-family:"Baloo 2",system-ui,sans-serif; font-size:18px; line-height:1.2; margin:10px 0 4px;}
+  .reden p{font-size:14.5px; line-height:1.55; margin:0;}
+  .bronnenkaart{margin-top:16px; background:var(--veld); border:1px solid var(--line); border-radius:18px; padding:16px 20px;}
+  .bronnenkaart h3{font-family:"Baloo 2",system-ui,sans-serif; font-size:18px; margin-bottom:6px;}
+  .bron{font-size:13.5px; padding-left:22px; text-indent:-22px; margin:7px 0; line-height:1.5; word-break:break-word;}
+  .voet{text-align:center; color:var(--muted); font-size:13px; margin-top:34px;}
+  .voet a{color:var(--accent); font-weight:700; text-decoration:none;}
 
   .kaartprint{display:none;}
   @media print{
@@ -213,16 +249,17 @@
 </head>
 <body>
 <div class="app">
-  <header>
-    <div class="eyebrow">Technisch lezen</div>
-    <h1>Leesflitser</h1>
-    <div class="lead">Flits letters, woorden en zinnen op jouw niveau, groep 3 t/m 8. Klassikaal op het digibord of zelf op de tablet. Met racelezen-timer en leeskaarten om te printen.</div>
+  <header class="kop">
+    <div class="kop-merk">
+      <span class="logo">⚡</span>
+      <div><div class="eyebrow">Lesmateriaal Blink · technisch lezen</div><h1>Leesflitser</h1></div>
+    </div>
+    <div class="lead">Flits letters, woorden en zinnen op jouw niveau, groep 3 t/m 8. Klassikaal op het digibord of zelf op de tablet. Met racelezen, leeskaarten en een onderzoeksmodus voor leesgroepjes.</div>
+    <div class="seg hoofdtabs">
+      <button class="aan" id="tabOefenen">📖 Oefenen</button>
+      <button id="tabOnderzoek">🎯 Onderzoek</button>
+    </div>
   </header>
-
-  <div class="seg hoofdtabs">
-    <button class="aan" id="tabOefenen">📖 Oefenen</button>
-    <button id="tabOnderzoek">🎯 Onderzoek</button>
-  </div>
 
 <div id="oefenview">
   <div class="card balk">
@@ -324,7 +361,7 @@
 </div>
 
 <div id="onderzoekview" style="display:none">
-  <div class="card privacy">🔒 <b>Privacy:</b> alles wat je hier invult blijft alleen op dit apparaat, in deze browser. Er gaat niets online. Gebruik codes (A, B, C), nooit namen. Maak elke week een back-up via <b>Logboek</b>.</div>
+  <div class="card privacy"><span class="slot">🔒</span><div><b>Privacy:</b> alles wat je hier invult blijft alleen op dit apparaat, in deze browser. Er gaat niets online. Gebruik codes (A, B, C), nooit namen. Maak elke week een back-up via <b>Logboek</b>.</div></div>
 
   <div class="seg subtabs" id="subtabs">
     <button class="aan" data-sub="sessie">⏱ Sessie</button>
@@ -338,8 +375,8 @@
   <div id="sub-sessie" class="sub">
     <div class="card paneel">
       <div class="stappen">
-        <span class="stap" id="st1">1 · Voorbereiden</span><span class="stap" id="st2">2 · Flitsen</span>
-        <span class="stap" id="st3">3 · Herhaald lezen</span><span class="stap" id="st4">4 · Afronden</span>
+        <span class="stap" id="st1"><i>1</i>Voorbereiden</span><span class="stap" id="st2"><i>2</i>Flitsen</span>
+        <span class="stap" id="st3"><i>3</i>Herhaald lezen</span><span class="stap" id="st4"><i>4</i>Afronden</span>
         <span class="klokken" id="sesKlok"></span>
       </div>
 
@@ -475,40 +512,45 @@
   <div id="sub-waarom" class="sub" style="display:none">
     <div class="card paneel waarom">
       <h2 class="ptitel">Waarom werkt de onderzoeksmodus zo?</h2>
-      <p>Elke keuze in dit deel van de Leesflitser komt uit onderzoek. Hieronder staat per keuze waarom, met de bron erbij.</p>
-      <h3>1. Vlot lezen is de basis voor begrijpen</h3>
-      <p>Begrijpend lezen is het product van decoderen en taalbegrip (Gough &amp; Tunmer, 1986). Wie woorden vlot herkent, houdt ruimte over voor de inhoud (Van der Leij &amp; Vernooy, 2023). Wie weinig leest, blijft achter en gaat daardoor nog minder lezen (Stanovich, 1986).</p>
-      <h3>2. Korte, lastige woorden flitsen</h3>
-      <p>Zwakke lezers kunnen het best korte woorden flitsen waar ze moeite mee hebben. Dat helpt ook bij langere woorden die ze niet geoefend hebben (Gijsel, 2019). Daarom kies je in de sessie een maximale woordlengte en komen lastige woorden als eerste terug.</p>
-      <h3>3. Echt flitsen: kort tonen</h3>
-      <p>In de sessie verdwijnt het woord na de ingestelde flitsduur. Zwakke lezers die oefenden met woorden die maar kort in beeld waren, gingen sneller decoderen (Van den Bosch et al., 1995). Leest de groep bijna alles goed, maak de flitsduur dan korter.</p>
-      <h3>4. Lastige woorden laten terugkomen</h3>
-      <p>Een woord blijft in de oefenlijst tot het drie keer op rij goed is gelezen. Zo oefen je verspreid over meerdere dagen en haal je het woord steeds opnieuw op. Oefenen door op te halen en gespreid oefenen horen bij de meest effectieve leertechnieken (Dunlosky et al., 2013). De grens van drie keer is een eigen ontwerpkeuze, die je in je onderzoek evalueert.</p>
-      <h3>5. Woordniveau én tekstniveau</h3>
-      <p>Losse woorden flitsen maakt die woorden sneller, maar dat gaat niet vanzelf over op teksten. Oefenen op woord- en tekstniveau samen werkt het best (Gijsel, 2019). Daarom volgt na het flitsen altijd herhaald lezen.</p>
-      <h3>6. Herhaald lezen: 3 à 4 keer, hardop, aan een volwassene</h3>
-      <p>Herhaald lezen werkt vooral als leerlingen een tekst drie tot vier keer hardop lezen aan een volwassene die vooraf aanwijzingen geeft en tijdens het lezen corrigeert. Voorlezen aan klasgenoten blijkt niet te helpen (Hoogeveen, 2024).</p>
-      <h3>7. Genoeg oefentijd, en die bijhouden</h3>
-      <p>In een groot Nederlands onderzoek naar een flitsprogramma oefenden scholen gemiddeld 9 uur in plaats van de bedoelde 18 tot 24 uur (3 à 4 sessies van 10 tot 15 minuten per week). Toen werkte het niet beter dan de gewone aanpak, maar leerlingen die meer oefenden gingen wel meer vooruit (Nationaal Kennisinstituut Onderwijs [NKO], z.d.). Daarom houdt de app per sessie de oefentijd bij en zie je per week of je het doel haalt.</p>
-      <h3>8. Eerlijk meten</h3>
-      <p>De voor- en nameting doe je met de DMT en AVI uit het leerlingvolgsysteem. De DMT meet hoe snel en nauwkeurig een leerling losse woorden leest, AVI het lezen van tekst (Cito, z.d.). Gebruik bij de nameting een andere versie dan bij de voormeting, en leg de verwachte groei vast vóórdat je meet.</p>
-      <h3>9. Zorgvuldig met gegevens</h3>
-      <p>De app werkt met codes in plaats van namen en bewaart alles alleen op dit apparaat. Dat past bij zorgvuldigheid en verantwoordelijkheid, twee principes uit de Nederlandse gedragscode wetenschappelijke integriteit (KNAW et al., 2018).</p>
-      <h3>Bronnen</h3>
-      <p class="bron">Cito. (z.d.). <i>AVI en DMT</i>. Geraadpleegd op 21 september 2026, van https://cito.nl/onderwijs/primair-onderwijs/leerling-in-beeld-leerlingvolgsysteem/dit-volg-je/avi-en-dmt/</p>
-      <p class="bron">Dunlosky, J., Rawson, K. A., Marsh, E. J., Nathan, M. J., &amp; Willingham, D. T. (2013). Improving students' learning with effective learning techniques: Promising directions from cognitive and educational psychology. <i>Psychological Science in the Public Interest, 14</i>(1), 4-58. https://doi.org/10.1177/1529100612453266</p>
-      <p class="bron">Gijsel, M. (2019, 18 december). <i>Wat is voor zwakke lezers effectiever voor goede resultaten op de Drie-Minuten-Toets: Flitsen van woorden of lezen van teksten?</i> Kennisrotonde. Geraadpleegd op 21 september 2026, van https://www.kennisrotonde.nl/vraag-en-antwoord/woordlezen-op-tempo</p>
-      <p class="bron">Gough, P. B., &amp; Tunmer, W. E. (1986). Decoding, reading, and reading disability. <i>Remedial and Special Education, 7</i>(1), 6-10. https://doi.org/10.1177/074193258600700104</p>
-      <p class="bron">Hoogeveen, K. (2024, 20 december). <i>Wat is de invloed van herhaald lezen op tekstbegrip?</i> (VRAAG-2328). Kennisrotonde. Geraadpleegd op 21 september 2026, van https://www.kennisrotonde.nl/vraag-en-antwoord/invloed-herhaald-lezen-op-tekstbegrip</p>
-      <p class="bron">KNAW, NFU, NWO, TO2-federatie, Vereniging Hogescholen, &amp; VSNU. (2018). <i>Nederlandse gedragscode wetenschappelijke integriteit</i>. https://doi.org/10.17026/dans-2cj-nvwu</p>
-      <p class="bron">Nationaal Kennisinstituut Onderwijs. (z.d.). <i>RCT onderzoek naar de interventie 'Flits! Tutorlezen'</i>. Geraadpleegd op 21 september 2026, van https://www.nko.nl/onderzoeksprojecten/rct-onderzoek-naar-de-interventie-flits-tutorlezen</p>
-      <p class="bron">Stanovich, K. E. (1986). Matthew effects in reading: Some consequences of individual differences in the acquisition of literacy. <i>Reading Research Quarterly, 21</i>(4), 360-407.</p>
-      <p class="bron">Van den Bosch, K., Van Bon, W. H. J., &amp; Schreuder, R. (1995). Poor readers' decoding skills: Effects of training with limited exposure duration. <i>Reading Research Quarterly, 30</i>(1), 110-125.</p>
-      <p class="bron">Van der Leij, A., &amp; Vernooy, K. (2023, 15 juni). <i>Technisch lezen in het primair onderwijs</i>. Onderwijskennis.nl. Geraadpleegd op 21 september 2026, van https://www.onderwijskennis.nl/kennisbank/technisch-lezen-in-het-primair-onderwijs</p>
-      <p class="klein-tekst" style="margin-top:16px;">Gemaakt door Bart de Vries, met hulp van AI (Claude) bij het programmeren en het uitzoeken van bronnen.</p>
+      <p>Elke keuze in dit deel van de Leesflitser komt uit onderzoek. Per keuze zie je waarom, met de bron erbij.</p>
+      <div class="redenen">
+        <div class="reden"><span class="nr">1</span><h3>Vlot lezen is de basis voor begrijpen</h3>
+          <p>Begrijpend lezen is het product van decoderen en taalbegrip (Gough &amp; Tunmer, 1986). Wie woorden vlot herkent, houdt ruimte over voor de inhoud (Van der Leij &amp; Vernooy, 2023). Wie weinig leest, blijft achter en gaat daardoor nog minder lezen (Stanovich, 1986).</p></div>
+        <div class="reden"><span class="nr">2</span><h3>Korte, lastige woorden flitsen</h3>
+          <p>Zwakke lezers kunnen het best korte woorden flitsen waar ze moeite mee hebben. Dat helpt ook bij langere woorden die ze niet geoefend hebben (Gijsel, 2019). Daarom kies je een maximale woordlengte en komen lastige woorden als eerste terug.</p></div>
+        <div class="reden"><span class="nr">3</span><h3>Echt flitsen: kort tonen</h3>
+          <p>Het woord verdwijnt na de ingestelde flitsduur. Zwakke lezers die oefenden met woorden die maar kort in beeld waren, gingen sneller decoderen (Van den Bosch et al., 1995). Leest de groep bijna alles goed, maak de flitsduur dan korter.</p></div>
+        <div class="reden"><span class="nr">4</span><h3>Lastige woorden laten terugkomen</h3>
+          <p>Een woord blijft in de oefenlijst tot het drie keer op rij goed is gelezen. Zo oefen je verspreid over meerdere dagen en haal je het woord steeds opnieuw op. Oefenen door op te halen en gespreid oefenen horen bij de meest effectieve leertechnieken (Dunlosky et al., 2013). De grens van drie keer is een eigen keuze, die ik in mijn onderzoek evalueer.</p></div>
+        <div class="reden"><span class="nr">5</span><h3>Woordniveau én tekstniveau</h3>
+          <p>Losse woorden flitsen maakt die woorden sneller, maar dat gaat niet vanzelf over op teksten. Oefenen op woord- en tekstniveau samen werkt het best (Gijsel, 2019). Daarom volgt na het flitsen altijd herhaald lezen.</p></div>
+        <div class="reden"><span class="nr">6</span><h3>Herhaald lezen: 3 à 4 keer, hardop, aan een volwassene</h3>
+          <p>Herhaald lezen werkt vooral als leerlingen een tekst drie tot vier keer hardop lezen aan een volwassene die vooraf aanwijzingen geeft en tijdens het lezen corrigeert. Voorlezen aan klasgenoten blijkt niet te helpen (Hoogeveen, 2024).</p></div>
+        <div class="reden"><span class="nr">7</span><h3>Genoeg oefentijd, en die bijhouden</h3>
+          <p>In een groot Nederlands onderzoek naar een flitsprogramma oefenden scholen gemiddeld 9 uur in plaats van de bedoelde 18 tot 24 uur (3 à 4 sessies van 10 tot 15 minuten per week). Toen werkte het niet beter dan de gewone aanpak, maar leerlingen die meer oefenden gingen wel meer vooruit (Nationaal Kennisinstituut Onderwijs [NKO], z.d.). Daarom houdt de app de oefentijd bij.</p></div>
+        <div class="reden"><span class="nr">8</span><h3>Eerlijk meten</h3>
+          <p>De voor- en nameting doe je met de DMT en AVI uit het leerlingvolgsysteem. De DMT meet hoe snel en nauwkeurig een leerling losse woorden leest, AVI het lezen van tekst (Cito, z.d.). Gebruik bij de nameting een andere versie en leg de verwachte groei vast vóórdat je meet.</p></div>
+        <div class="reden"><span class="nr">9</span><h3>Zorgvuldig met gegevens</h3>
+          <p>De app werkt met codes in plaats van namen en bewaart alles alleen op dit apparaat. Dat past bij zorgvuldigheid en verantwoordelijkheid, twee principes uit de Nederlandse gedragscode wetenschappelijke integriteit (KNAW et al., 2018).</p></div>
+      </div>
+      <div class="bronnenkaart">
+        <h3>Bronnen</h3>
+        <p class="bron">Cito. (z.d.). <i>AVI en DMT</i>. Geraadpleegd op 21 september 2026, van https://cito.nl/onderwijs/primair-onderwijs/leerling-in-beeld-leerlingvolgsysteem/dit-volg-je/avi-en-dmt/</p>
+        <p class="bron">Dunlosky, J., Rawson, K. A., Marsh, E. J., Nathan, M. J., &amp; Willingham, D. T. (2013). Improving students' learning with effective learning techniques: Promising directions from cognitive and educational psychology. <i>Psychological Science in the Public Interest, 14</i>(1), 4-58. https://doi.org/10.1177/1529100612453266</p>
+        <p class="bron">Gijsel, M. (2019, 18 december). <i>Wat is voor zwakke lezers effectiever voor goede resultaten op de Drie-Minuten-Toets: Flitsen van woorden of lezen van teksten?</i> Kennisrotonde. Geraadpleegd op 21 september 2026, van https://www.kennisrotonde.nl/vraag-en-antwoord/woordlezen-op-tempo</p>
+        <p class="bron">Gough, P. B., &amp; Tunmer, W. E. (1986). Decoding, reading, and reading disability. <i>Remedial and Special Education, 7</i>(1), 6-10. https://doi.org/10.1177/074193258600700104</p>
+        <p class="bron">Hoogeveen, K. (2024, 20 december). <i>Wat is de invloed van herhaald lezen op tekstbegrip?</i> (VRAAG-2328). Kennisrotonde. Geraadpleegd op 21 september 2026, van https://www.kennisrotonde.nl/vraag-en-antwoord/invloed-herhaald-lezen-op-tekstbegrip</p>
+        <p class="bron">KNAW, NFU, NWO, TO2-federatie, Vereniging Hogescholen, &amp; VSNU. (2018). <i>Nederlandse gedragscode wetenschappelijke integriteit</i>. https://doi.org/10.17026/dans-2cj-nvwu</p>
+        <p class="bron">Nationaal Kennisinstituut Onderwijs. (z.d.). <i>RCT onderzoek naar de interventie 'Flits! Tutorlezen'</i>. Geraadpleegd op 21 september 2026, van https://www.nko.nl/onderzoeksprojecten/rct-onderzoek-naar-de-interventie-flits-tutorlezen</p>
+        <p class="bron">Stanovich, K. E. (1986). Matthew effects in reading: Some consequences of individual differences in the acquisition of literacy. <i>Reading Research Quarterly, 21</i>(4), 360-407.</p>
+        <p class="bron">Van den Bosch, K., Van Bon, W. H. J., &amp; Schreuder, R. (1995). Poor readers' decoding skills: Effects of training with limited exposure duration. <i>Reading Research Quarterly, 30</i>(1), 110-125.</p>
+        <p class="bron">Van der Leij, A., &amp; Vernooy, K. (2023, 15 juni). <i>Technisch lezen in het primair onderwijs</i>. Onderwijskennis.nl. Geraadpleegd op 21 september 2026, van https://www.onderwijskennis.nl/kennisbank/technisch-lezen-in-het-primair-onderwijs</p>
+      </div>
     </div>
   </div>
 </div>
+
+  <footer class="voet">Leesflitser · onderdeel van <a href="https://bartdevries43-arch.github.io/lesmateriaal-blink/">Lesmateriaal Blink</a> · Bart de Vries</footer>
 </div>
 
 <div class="kaartprint" id="kaartprint"></div>
