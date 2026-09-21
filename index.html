@@ -1270,6 +1270,12 @@ $('metCsv').addEventListener('click', csvMetingen);
 /* init */
 laadO();
 herstel();
+/* Directe link, bijvoorbeeld ?lijst=AVI%20Start%20·%20groep%203 of ?modus=zinnen */
+const URLQ=new URLSearchParams(location.search);
+(function(){ const m=URLQ.get('modus'), l=URLQ.get('lijst');
+  if(m==='flitsen'||m==='zinnen'||m==='racelezen') modus=m;
+  if(l){ if(ZINNEN[l]){ modus='zinnen'; lastZinSel=l; } else if(LETTERS_GROEP[l]||NIVEAUS[l]||CATEGORIEEN[l]){ if(modus==='zinnen') modus='flitsen'; lastWoordSel=l; } }
+})();
 pasWszToe();
 applyModusUI();
 vulSelect();
@@ -1278,7 +1284,7 @@ $('tempoveld').style.opacity=isAuto()?1:.4;
 $('eigenvak').classList.toggle('aan', sel.value==="__eigen__");
 updatePakketUI();
 laadLijst(true);
-try{ if(localStorage.getItem('leesflitser-view')==='onderzoek') zetView('onderzoek'); }catch(e){}
+try{ if(!URLQ.get('lijst') && !URLQ.get('modus') && localStorage.getItem('leesflitser-view')==='onderzoek') zetView('onderzoek'); }catch(e){}
 </script>
 </body>
 </html>
