@@ -29,6 +29,12 @@ Een tabblad voor praktijkonderzoek naar flitsen en herhaald lezen met een groepj
 Privacy: alle onderzoeksgegevens blijven in de browser van het apparaat
 (localStorage). Er gaat niets online. Werk met codes (A, B, L3), nooit met namen.
 
+## Woordenschat (nieuw)
+Een derde tabblad met de woordenschat-app van Lesmateriaal Blink: de woorden van
+Snappet Taal per blok oefenen met woordkaarten, quizzen en een oefentoets. De
+woordenlijsten zijn afgeschermd met een klascode. Direct openen:
+`?tab=woordenschat`.
+
 ## Sneltoetsen
 - Oefenen: spatie = start/pauze (of volgend woord), pijl links/rechts = vorige/volgende
 - Sessie-flitsen: pijl rechts = goed, pijl links = lastig, spatie = nog eens tonen
