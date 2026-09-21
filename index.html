@@ -128,6 +128,67 @@
   body.leesletter .woord, body.leesletter .rw, body.leesletter .kaartprint td{
     font-family:"Andika","Comic Sans MS","Comic Neue",sans-serif;}
 
+  /* Hoofdtabs en onderzoek */
+  .hoofdtabs{margin-top:16px;}
+  .privacy{margin-top:14px; padding:12px 16px; font-size:14px;}
+  .subtabs{margin-top:14px; flex-wrap:wrap;}
+  .paneel{margin-top:14px; padding:18px 20px;}
+  .ptitel{font-family:"Baloo 2",system-ui,sans-serif; font-size:24px; margin-bottom:6px;}
+  .pkop{font-size:13px; text-transform:uppercase; letter-spacing:.6px; color:var(--muted); margin:18px 0 8px;}
+  .klein-tekst{font-size:13px; color:var(--muted);}
+  .stappen{display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-bottom:14px;}
+  .stap{padding:6px 12px; border-radius:999px; font-weight:800; font-size:13px; background:var(--veld);
+    border:1px solid var(--line-2); color:var(--muted);}
+  .stap.aan{background:var(--accent); color:#fff; border-color:transparent;}
+  .stap.gedaan{color:var(--accent2);}
+  .klokken{margin-left:auto; font-weight:800; color:var(--muted); font-variant-numeric:tabular-nums;}
+  .rij{display:flex; flex-wrap:wrap; gap:12px 18px; align-items:flex-end; margin:12px 0;}
+  .codes{display:flex; flex-wrap:wrap; gap:8px; align-items:center;}
+  .sesflits{margin-top:0; min-height:40vh;}
+  .woord.weg{color:var(--muted); opacity:.35;}
+  .oordeel{display:flex; gap:12px; justify-content:center; margin-top:14px; flex-wrap:wrap;}
+  .oordeel small{font-weight:600; opacity:.8; font-size:12px;}
+  button.btn.goed{background:#2fa37a; color:#fff; border-color:transparent; font-size:19px; padding:15px 26px;}
+  button.btn.lastig{background:#e2534a; color:#fff; border-color:transparent; font-size:19px; padding:15px 26px;}
+  button.mini{border:none; background:transparent; color:var(--muted); cursor:pointer; font-size:14px; padding:2px 6px; border-radius:8px;}
+  button.mini:hover{background:rgba(226,83,74,.15); color:#e2534a;}
+  button.mini.wit{color:#fff;}
+  .tekstvak{font-family:"Andika","Comic Sans MS",sans-serif; font-size:clamp(20px,2.6vw,30px); line-height:1.75;
+    padding:22px; background:var(--card-2); border:1px solid var(--line); border-radius:16px; margin:12px 0;}
+  .tijd.klein{font-size:34px;}
+  .stats{display:grid; grid-template-columns:repeat(auto-fit,minmax(145px,1fr)); gap:10px; margin:10px 0 16px;}
+  .stat{background:var(--veld); border:1px solid var(--line-2); border-radius:14px; padding:12px 14px;}
+  .stat b{display:block; font-size:24px; font-family:"Baloo 2",system-ui,sans-serif; line-height:1.1;}
+  .stat span{font-size:11.5px; color:var(--muted); font-weight:800; text-transform:uppercase; letter-spacing:.4px;}
+  .tabwrap{overflow-x:auto;}
+  table.tab{width:100%; border-collapse:collapse; font-size:14px;}
+  table.tab th,table.tab td{padding:7px 8px; border-bottom:1px solid var(--line); text-align:left; vertical-align:middle;}
+  table.tab th{font-size:11px; text-transform:uppercase; color:var(--muted); letter-spacing:.4px;}
+  input[type=text],input[type=number],input[type=date]{padding:9px 11px; border:1px solid var(--line-2); border-radius:12px;
+    background:var(--veld); color:var(--ink); font-family:inherit; font-size:14px;}
+  input.klein{width:84px;}
+  table.tab input,table.tab select{padding:6px 8px; font-size:13px; min-width:0;}
+  table.tab select{border-radius:10px;}
+  .weken{display:flex; align-items:flex-end; gap:6px; height:150px; padding-top:18px; border-bottom:1px solid var(--line-2); position:relative;}
+  .week{flex:1; min-width:20px; height:100%; display:flex; flex-direction:column; justify-content:flex-end; align-items:center;}
+  .week .bar{width:100%; background:var(--accent); border-radius:6px 6px 0 0; min-height:2px;}
+  .week .bar.gehaald{background:var(--accent2);}
+  .week.buiten .bar{background:var(--muted); opacity:.45;}
+  .week.buiten small{opacity:.5;}
+  .week small{font-size:10px; color:var(--muted); margin-top:4px; white-space:nowrap;}
+  .doellijn{position:absolute; left:0; right:0; border-top:2px dashed #e2534a; pointer-events:none;}
+  .doellijn span{position:absolute; right:0; top:-18px; font-size:11px; font-weight:800; color:#e2534a;}
+  .catrij{display:flex; align-items:center; gap:10px; margin:6px 0; font-size:14px;}
+  .catnaam{width:210px; font-weight:700;}
+  .catbalk{flex:1; height:12px; background:var(--veld); border:1px solid var(--line); border-radius:8px; overflow:hidden;}
+  .catbalk span{display:block; height:100%; background:#e2534a;}
+  .catgetal{width:140px; color:var(--muted); font-size:13px;}
+  .info{background:rgba(47,163,122,.10); border:1px solid rgba(47,163,122,.35); border-radius:12px; padding:10px 14px; font-size:14px; margin:10px 0;}
+  .let{background:rgba(226,83,74,.10); border:1px solid rgba(226,83,74,.35); border-radius:12px; padding:10px 14px; font-size:14px; margin:8px 0;}
+  .waarom h3{font-family:"Baloo 2",system-ui,sans-serif; font-size:19px; margin:18px 0 4px;}
+  .waarom p{margin:6px 0; font-size:15px; line-height:1.6; max-width:780px;}
+  .waarom .bron{font-size:13.5px; padding-left:22px; text-indent:-22px; margin:7px 0;}
+
   .kaartprint{display:none;}
   @media print{
     body{background:#fff;}
@@ -141,6 +202,11 @@
     .kaartprint td{font-size:18px; padding:4px 6px; border-bottom:1px dotted #bbb; vertical-align:middle;}
     .kaartprint td.nr{color:#999; font-size:12px; width:8mm; text-align:right;}
     .kaartprint td.rondes{width:26mm; text-align:right; letter-spacing:6px; color:#bbb;}
+    .kaartprint .logprint h2{font-size:18px; text-align:left;}
+    .kaartprint .logprint .instr{text-align:left;}
+    .kaartprint .logprint th{font-size:10px; text-align:left; border-bottom:1px solid #999; padding:3px 4px;}
+    .kaartprint .logprint td{font-size:10.5px; padding:3px 4px; border-bottom:1px solid #ddd; vertical-align:top;}
+    .kaartprint .logprint .valid{margin-top:12mm; font-size:12px; line-height:2.3;}
     @page{size:A4 portrait; margin:12mm;}
   }
 </style>
@@ -153,6 +219,12 @@
     <div class="lead">Flits letters, woorden en zinnen op jouw niveau, groep 3 t/m 8. Klassikaal op het digibord of zelf op de tablet. Met racelezen-timer en leeskaarten om te printen.</div>
   </header>
 
+  <div class="seg hoofdtabs">
+    <button class="aan" id="tabOefenen">📖 Oefenen</button>
+    <button id="tabOnderzoek">🎯 Onderzoek</button>
+  </div>
+
+<div id="oefenview">
   <div class="card balk">
     <div class="veld">
       <label>Modus</label>
@@ -249,6 +321,194 @@
     <textarea id="eigeninvoer" placeholder="maan  roos  vis ...  (of in de Zinnen-modus: één zin per regel)"></textarea>
     <div style="margin-top:10px;"><button class="btn primair" id="eigentoepassen">Gebruik dit</button></div>
   </div>
+</div>
+
+<div id="onderzoekview" style="display:none">
+  <div class="card privacy">🔒 <b>Privacy:</b> alles wat je hier invult blijft alleen op dit apparaat, in deze browser. Er gaat niets online. Gebruik codes (A, B, C), nooit namen. Maak elke week een back-up via <b>Logboek</b>.</div>
+
+  <div class="seg subtabs" id="subtabs">
+    <button class="aan" data-sub="sessie">⏱ Sessie</button>
+    <button data-sub="woorden">🔁 Lastige woorden</button>
+    <button data-sub="logboek">📒 Logboek</button>
+    <button data-sub="metingen">📈 Metingen</button>
+    <button data-sub="waarom">💡 Waarom zo?</button>
+  </div>
+
+  <!-- SESSIE -->
+  <div id="sub-sessie" class="sub">
+    <div class="card paneel">
+      <div class="stappen">
+        <span class="stap" id="st1">1 · Voorbereiden</span><span class="stap" id="st2">2 · Flitsen</span>
+        <span class="stap" id="st3">3 · Herhaald lezen</span><span class="stap" id="st4">4 · Afronden</span>
+        <span class="klokken" id="sesKlok"></span>
+      </div>
+
+      <div id="sesPrep">
+        <div class="info" id="weekstatus"></div>
+        <div class="rij"><div class="veld"><label>Aanwezig (codes)</label><div class="codes" id="prepCodes"></div></div></div>
+        <div class="rij">
+          <div class="veld"><label for="prepBron">Woorden flitsen uit</label><select id="prepBron"></select></div>
+          <div class="veld"><label for="prepLen">Korte woorden</label>
+            <select id="prepLen" style="min-width:150px"><option value="5">t/m 5 letters</option><option value="6">t/m 6 letters</option><option value="7">t/m 7 letters</option><option value="8">t/m 8 letters</option><option value="99">alle lengtes</option></select></div>
+          <div class="veld"><label for="prepAantal">Woorden per ronde</label>
+            <select id="prepAantal" style="min-width:120px"><option>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select></div>
+          <div class="veld"><span class="tempolabel">Flitsduur: <span class="tempoval" id="prepDuurVal">800 ms</span></span>
+            <input type="range" id="prepDuur" min="200" max="2000" step="100" value="800"></div>
+        </div>
+        <div class="rij"><div class="veld"><label for="prepTekst">Tekst voor herhaald lezen</label><select id="prepTekst"></select></div></div>
+        <textarea id="prepEigenTekst" placeholder="Plak hier je eigen tekst, bijvoorbeeld een stukje uit het leesboek van de groep." style="display:none"></textarea>
+        <div class="knoppen"><button class="btn primair" id="sesStart">▶ Start sessie</button></div>
+        <p class="klein-tekst" style="margin-top:10px;">Lastige woorden uit eerdere sessies komen automatisch terug, tot ze drie keer op rij goed gelezen zijn. Het woord verdwijnt na de flitsduur; daarna geef jij aan of het goed of lastig was.</p>
+      </div>
+
+      <div id="sesFlits" style="display:none">
+        <div class="card flits sesflits">
+          <span class="voortgang" id="sesVoortgang"></span>
+          <span class="woord" id="sesWoord"></span>
+          <div class="klaar" id="sesRondeKlaar">
+            <div class="big" id="sesRondeTitel"></div>
+            <div class="sub" id="sesRondeSub"></div>
+            <div class="rij" style="justify-content:center;">
+              <button class="btn primair" id="sesNogRonde">↻ Nog een ronde</button>
+              <button class="btn" id="sesNaarHerhaal2">Herhaald lezen ▶</button>
+            </div>
+          </div>
+        </div>
+        <div class="oordeel">
+          <button class="btn lastig" id="sesLastig">✗ Lastig <small>(←)</small></button>
+          <button class="btn" id="sesNogEens">👁 Nog eens <small>(spatie)</small></button>
+          <button class="btn goed" id="sesGoed">✓ Goed <small>(→)</small></button>
+        </div>
+        <div class="knoppen"><button class="btn" id="sesNaarHerhaal">Naar herhaald lezen ▶</button><button class="btn" id="sesAnnuleer">Stoppen zonder opslaan</button></div>
+      </div>
+
+      <div id="sesHerhaal" style="display:none">
+        <div class="info">Doe de tekst eerst voor en geef aanwijzingen. Laat daarna 3 à 4 keer hardop lezen, aan jou of een andere volwassene. Geef tijdens het lezen korte, corrigerende feedback.</div>
+        <div class="tekstvak" id="sesTekst"></div>
+        <div class="rij">
+          <div class="veld"><label>Rondes gelezen</label><div class="codes" id="sesRondes"></div></div>
+          <div class="veld"><label>Timer (optioneel)</label>
+            <div class="codes"><span class="tijd klein" id="sesTijd">1:00</span><button class="btn" id="sesTimer">▶ 1 minuut</button></div></div>
+        </div>
+        <div id="sesScores"></div>
+        <div class="knoppen"><button class="btn primair" id="sesNaarAfrond">Afronden ▶</button><button class="btn" id="sesTerugFlits">◀ Terug naar flitsen</button></div>
+      </div>
+
+      <div id="sesAfrond" style="display:none">
+        <div class="stats" id="sesSamenvatting"></div>
+        <div class="rij">
+          <div class="veld"><label for="sesDatum">Datum</label><input type="date" id="sesDatum"></div>
+          <div class="veld"><label for="sesMin">Totale duur (min)</label><input type="number" id="sesMin" class="klein" min="1" max="180"></div>
+          <div class="veld"><label for="sesDoor">Uitgevoerd door</label>
+            <select id="sesDoor" style="min-width:200px"><option>ik (lio)</option><option>werkplekbegeleider</option><option>andere volwassene</option></select></div>
+        </div>
+        <div class="veld"><label for="sesNotitie">Wat viel op? (geen namen)</label>
+          <textarea id="sesNotitie" placeholder="Bijvoorbeeld: betrokkenheid van de groep, welke woorden lastig waren, wat ik de volgende keer anders doe."></textarea></div>
+        <div class="knoppen"><button class="btn primair" id="sesOpslaan">💾 Opslaan in logboek</button><button class="btn" id="sesTerugHerhaal">◀ Terug</button><button class="btn" id="sesAnnuleer2">Niet opslaan</button></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LASTIGE WOORDEN -->
+  <div id="sub-woorden" class="sub" style="display:none">
+    <div class="card paneel">
+      <h2 class="ptitel">Lastige woorden</h2>
+      <p class="klein-tekst">Woorden die je tijdens het flitsen als <b>lastig</b> markeert, komen hier terecht. Ze komen terug in de volgende sessies tot ze drie keer op rij goed gelezen zijn. Je kunt ook zelf woorden toevoegen, bijvoorbeeld uit de foutenanalyse van de DMT.</p>
+      <div class="rij"><input type="text" id="poolInvoer" placeholder="woorden, gescheiden door een spatie of komma" style="flex:1; min-width:220px"><button class="btn" id="poolToevoegen">+ Toevoegen</button></div>
+      <h3 class="pkop">Welke soorten woorden gaan fout?</h3>
+      <div id="poolCats"></div>
+      <p class="klein-tekst">De indeling in categorieën gebeurt automatisch op spelling. Het is een hulpmiddel: controleer hem zelf.</p>
+      <h3 class="pkop">Woordenlijst</h3>
+      <label class="klein-tekst"><input type="checkbox" id="poolToonBeheerst"> ook beheerste woorden tonen</label>
+      <div class="tabwrap"><table class="tab" id="poolTabel"></table></div>
+      <div class="knoppen"><button class="btn" id="poolPrint">🖨 Print als leeskaart</button><button class="btn" id="poolLeeg">Lijst leegmaken</button></div>
+    </div>
+  </div>
+
+  <!-- LOGBOEK -->
+  <div id="sub-logboek" class="sub" style="display:none">
+    <div class="card paneel">
+      <h2 class="ptitel">Oefenlogboek</h2>
+      <div class="stats" id="logStats"></div>
+      <div class="rij">
+        <div class="veld"><label for="logDoelSes">Doel: sessies per week</label><input type="number" id="logDoelSes" class="klein" min="1" max="7"></div>
+        <div class="veld"><label for="logDoelMin">Doel: minuten per sessie</label><input type="number" id="logDoelMin" class="klein" min="5" max="30"></div>
+        <div class="veld"><label for="logStart">Periode van</label><input type="date" id="logStart"></div>
+        <div class="veld"><label for="logEind">tot en met</label><input type="date" id="logEind"></div>
+      </div>
+      <h3 class="pkop">Oefentijd per week</h3>
+      <div id="logWeken"></div>
+      <h3 class="pkop">Alle sessies</h3>
+      <div class="tabwrap"><table class="tab" id="logTabel"></table></div>
+      <div class="knoppen">
+        <button class="btn" id="logCsv">⬇ Sessies (Excel)</button>
+        <button class="btn" id="logScoresCsv">⬇ Racelees-scores (Excel)</button>
+        <button class="btn" id="logPrint">🖨 Print logboek (met validatie)</button>
+        <button class="btn" id="logBackup">⬇ Back-up maken</button>
+        <button class="btn" id="logHerstel">⬆ Back-up terugzetten</button>
+        <input type="file" id="logFile" accept="application/json,.json" style="display:none">
+      </div>
+    </div>
+  </div>
+
+  <!-- METINGEN -->
+  <div id="sub-metingen" class="sub" style="display:none">
+    <div class="card paneel">
+      <h2 class="ptitel">Leerlingcodes en metingen</h2>
+      <p class="klein-tekst">Gebruik alleen codes van 1 of 2 letters, eventueel met cijfers (bijvoorbeeld A, B, L3). Bewaar de sleutel (welke code bij welk kind hoort) op papier, niet in deze app.</p>
+      <div class="rij"><input type="text" id="codeInvoer" maxlength="4" placeholder="code" style="width:110px"><button class="btn" id="codeToevoegen">+ Code</button><div class="codes" id="codeLijst"></div></div>
+      <h3 class="pkop">Norm vooraf vastleggen</h3>
+      <div class="rij">
+        <div class="veld"><label for="normGroei">Verwachte groei DMT (vaardigheidsscore)</label><input type="number" id="normGroei" class="klein" step="0.1"></div>
+        <div class="veld"><label for="normDatum">Vastgelegd op</label><input type="date" id="normDatum"></div>
+        <div class="veld"><label for="normMet">Afgesproken met (rol)</label><input type="text" id="normMet" placeholder="bijv. leesexpertgroep" style="width:200px"></div>
+      </div>
+      <h3 class="pkop">DMT en AVI: voor- en nameting</h3>
+      <div class="tabwrap"><table class="tab" id="metTabel"></table></div>
+      <div id="metWaarsch"></div>
+      <div class="info" id="metSamenvatting"></div>
+      <div class="knoppen"><button class="btn" id="metCsv">⬇ Metingen (Excel)</button></div>
+    </div>
+  </div>
+
+  <!-- WAAROM ZO -->
+  <div id="sub-waarom" class="sub" style="display:none">
+    <div class="card paneel waarom">
+      <h2 class="ptitel">Waarom werkt de onderzoeksmodus zo?</h2>
+      <p>Elke keuze in dit deel van de Leesflitser komt uit onderzoek. Hieronder staat per keuze waarom, met de bron erbij.</p>
+      <h3>1. Vlot lezen is de basis voor begrijpen</h3>
+      <p>Begrijpend lezen is het product van decoderen en taalbegrip (Gough &amp; Tunmer, 1986). Wie woorden vlot herkent, houdt ruimte over voor de inhoud (Van der Leij &amp; Vernooy, 2023). Wie weinig leest, blijft achter en gaat daardoor nog minder lezen (Stanovich, 1986).</p>
+      <h3>2. Korte, lastige woorden flitsen</h3>
+      <p>Zwakke lezers kunnen het best korte woorden flitsen waar ze moeite mee hebben. Dat helpt ook bij langere woorden die ze niet geoefend hebben (Gijsel, 2019). Daarom kies je in de sessie een maximale woordlengte en komen lastige woorden als eerste terug.</p>
+      <h3>3. Echt flitsen: kort tonen</h3>
+      <p>In de sessie verdwijnt het woord na de ingestelde flitsduur. Zwakke lezers die oefenden met woorden die maar kort in beeld waren, gingen sneller decoderen (Van den Bosch et al., 1995). Leest de groep bijna alles goed, maak de flitsduur dan korter.</p>
+      <h3>4. Lastige woorden laten terugkomen</h3>
+      <p>Een woord blijft in de oefenlijst tot het drie keer op rij goed is gelezen. Zo oefen je verspreid over meerdere dagen en haal je het woord steeds opnieuw op. Oefenen door op te halen en gespreid oefenen horen bij de meest effectieve leertechnieken (Dunlosky et al., 2013). De grens van drie keer is een eigen ontwerpkeuze, die je in je onderzoek evalueert.</p>
+      <h3>5. Woordniveau én tekstniveau</h3>
+      <p>Losse woorden flitsen maakt die woorden sneller, maar dat gaat niet vanzelf over op teksten. Oefenen op woord- en tekstniveau samen werkt het best (Gijsel, 2019). Daarom volgt na het flitsen altijd herhaald lezen.</p>
+      <h3>6. Herhaald lezen: 3 à 4 keer, hardop, aan een volwassene</h3>
+      <p>Herhaald lezen werkt vooral als leerlingen een tekst drie tot vier keer hardop lezen aan een volwassene die vooraf aanwijzingen geeft en tijdens het lezen corrigeert. Voorlezen aan klasgenoten blijkt niet te helpen (Hoogeveen, 2024).</p>
+      <h3>7. Genoeg oefentijd, en die bijhouden</h3>
+      <p>In een groot Nederlands onderzoek naar een flitsprogramma oefenden scholen gemiddeld 9 uur in plaats van de bedoelde 18 tot 24 uur (3 à 4 sessies van 10 tot 15 minuten per week). Toen werkte het niet beter dan de gewone aanpak, maar leerlingen die meer oefenden gingen wel meer vooruit (Nationaal Kennisinstituut Onderwijs [NKO], z.d.). Daarom houdt de app per sessie de oefentijd bij en zie je per week of je het doel haalt.</p>
+      <h3>8. Eerlijk meten</h3>
+      <p>De voor- en nameting doe je met de DMT en AVI uit het leerlingvolgsysteem. De DMT meet hoe snel en nauwkeurig een leerling losse woorden leest, AVI het lezen van tekst (Cito, z.d.). Gebruik bij de nameting een andere versie dan bij de voormeting, en leg de verwachte groei vast vóórdat je meet.</p>
+      <h3>9. Zorgvuldig met gegevens</h3>
+      <p>De app werkt met codes in plaats van namen en bewaart alles alleen op dit apparaat. Dat past bij zorgvuldigheid en verantwoordelijkheid, twee principes uit de Nederlandse gedragscode wetenschappelijke integriteit (KNAW et al., 2018).</p>
+      <h3>Bronnen</h3>
+      <p class="bron">Cito. (z.d.). <i>AVI en DMT</i>. Geraadpleegd op 21 september 2026, van https://cito.nl/onderwijs/primair-onderwijs/leerling-in-beeld-leerlingvolgsysteem/dit-volg-je/avi-en-dmt/</p>
+      <p class="bron">Dunlosky, J., Rawson, K. A., Marsh, E. J., Nathan, M. J., &amp; Willingham, D. T. (2013). Improving students' learning with effective learning techniques: Promising directions from cognitive and educational psychology. <i>Psychological Science in the Public Interest, 14</i>(1), 4-58. https://doi.org/10.1177/1529100612453266</p>
+      <p class="bron">Gijsel, M. (2019, 18 december). <i>Wat is voor zwakke lezers effectiever voor goede resultaten op de Drie-Minuten-Toets: Flitsen van woorden of lezen van teksten?</i> Kennisrotonde. Geraadpleegd op 21 september 2026, van https://www.kennisrotonde.nl/vraag-en-antwoord/woordlezen-op-tempo</p>
+      <p class="bron">Gough, P. B., &amp; Tunmer, W. E. (1986). Decoding, reading, and reading disability. <i>Remedial and Special Education, 7</i>(1), 6-10. https://doi.org/10.1177/074193258600700104</p>
+      <p class="bron">Hoogeveen, K. (2024, 20 december). <i>Wat is de invloed van herhaald lezen op tekstbegrip?</i> (VRAAG-2328). Kennisrotonde. Geraadpleegd op 21 september 2026, van https://www.kennisrotonde.nl/vraag-en-antwoord/invloed-herhaald-lezen-op-tekstbegrip</p>
+      <p class="bron">KNAW, NFU, NWO, TO2-federatie, Vereniging Hogescholen, &amp; VSNU. (2018). <i>Nederlandse gedragscode wetenschappelijke integriteit</i>. https://doi.org/10.17026/dans-2cj-nvwu</p>
+      <p class="bron">Nationaal Kennisinstituut Onderwijs. (z.d.). <i>RCT onderzoek naar de interventie 'Flits! Tutorlezen'</i>. Geraadpleegd op 21 september 2026, van https://www.nko.nl/onderzoeksprojecten/rct-onderzoek-naar-de-interventie-flits-tutorlezen</p>
+      <p class="bron">Stanovich, K. E. (1986). Matthew effects in reading: Some consequences of individual differences in the acquisition of literacy. <i>Reading Research Quarterly, 21</i>(4), 360-407.</p>
+      <p class="bron">Van den Bosch, K., Van Bon, W. H. J., &amp; Schreuder, R. (1995). Poor readers' decoding skills: Effects of training with limited exposure duration. <i>Reading Research Quarterly, 30</i>(1), 110-125.</p>
+      <p class="bron">Van der Leij, A., &amp; Vernooy, K. (2023, 15 juni). <i>Technisch lezen in het primair onderwijs</i>. Onderwijskennis.nl. Geraadpleegd op 21 september 2026, van https://www.onderwijskennis.nl/kennisbank/technisch-lezen-in-het-primair-onderwijs</p>
+      <p class="klein-tekst" style="margin-top:16px;">Gemaakt door Bart de Vries, met hulp van AI (Claude) bij het programmeren en het uitzoeken van bronnen.</p>
+    </div>
+  </div>
+</div>
 </div>
 
 <div class="kaartprint" id="kaartprint"></div>
@@ -515,7 +775,8 @@ $('fsVolgende').addEventListener('click',(e)=>{ e.stopPropagation(); stop(); vol
 $('fsStart').addEventListener('click',(e)=>{ e.stopPropagation(); toggleStart(); });
 $('fsSluit').addEventListener('click',(e)=>{ e.stopPropagation(); document.exitFullscreen&&document.exitFullscreen(); });
 document.addEventListener('keydown', (e)=>{
-  if(modus==='racelezen') return;
+  if(view!=='oefenen' || modus==='racelezen') return;
+  if(e.target.matches && e.target.matches('input,textarea,select')) return;
   if(e.code==="Space"){ e.preventDefault(); if(isAuto()) toggleStart(); else volgende(); }
   else if(e.code==="ArrowRight"){ stop(); volgende(); }
   else if(e.code==="ArrowLeft"){ stop(); verbergKlaar(); vorige(); }
@@ -543,7 +804,429 @@ $('printKnop').addEventListener('click', ()=>{
   window.print();
 });
 
+/* ================= ONDERZOEK: sessies, lastige woorden, logboek, metingen ================= */
+const OKEY='leesflitser-onderzoek-v1';
+let view='oefenen', sub='sessie';
+function leegO(){ return {versie:1,
+  instellingen:{doelSes:3, doelMin:12, flitsduur:800, maxLen:7, aantal:20, bron:"AVI E4 · groep 4", tekst:"Zinnen · groep 4",
+    eigenTekst:"", periodeStart:"2026-11-02", periodeEind:"2027-01-29", normGroei:"", normDatum:"", normMet:""},
+  codes:[], pool:{}, sessies:[], metingen:{}}; }
+let O=leegO();
+function normaliseerO(s){ const b=leegO(); return {versie:1,
+  instellingen:Object.assign(b.instellingen, s.instellingen||{}),
+  codes:Array.isArray(s.codes)?s.codes:[], pool:(s.pool&&typeof s.pool==='object')?s.pool:{},
+  sessies:Array.isArray(s.sessies)?s.sessies:[], metingen:(s.metingen&&typeof s.metingen==='object')?s.metingen:{}}; }
+function laadO(){ try{ const s=JSON.parse(localStorage.getItem(OKEY)||'null'); if(s && s.versie===1) O=normaliseerO(s); }catch(e){} }
+function bewaarO(){ try{ localStorage.setItem(OKEY, JSON.stringify(O)); }catch(e){ alert('Opslaan lukt niet in deze browser. Maak een back-up via Logboek.'); } }
+
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const isoVan=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+const vandaag=()=>isoVan(new Date());
+const nlDatum=iso=>{ if(!iso) return ''; const p=iso.split('-'); return p[2]+'-'+p[1]+'-'+p[0]; };
+function maandag(iso){ const d=new Date(iso+'T12:00:00'); d.setDate(d.getDate()-((d.getDay()+6)%7)); return d; }
+function weekNr(d){ const t=new Date(d); t.setDate(t.getDate()+3-((t.getDay()+6)%7));
+  const j=new Date(t.getFullYear(),0,4); return 1+Math.round(((t-j)/86400000-3+((j.getDay()+6)%7))/7); }
+const mmss=ms=>{ const s=Math.max(0,Math.floor(ms/1000)); return Math.floor(s/60)+':'+String(s%60).padStart(2,'0'); };
+const afr=(x,n=1)=>Math.round(x*Math.pow(10,n))/Math.pow(10,n);
+const nlGetal=x=>(x===''||x==null)?'':String(x).replace('.',',');
+const leeg=v=>v===''||v==null;
+const stat=(b,s)=>'<div class="stat"><b>'+esc(b)+'</b><span>'+esc(s)+'</span></div>';
+
+/* Categorie op spelling (hulpmiddel voor de foutenanalyse) */
+function categorie(w){
+  w=w.toLowerCase();
+  if(/(tie|ties|isch)$/.test(w)) return "-tie / -isch";
+  if(/(ig|lijk|lijks)$/.test(w)) return "-ig / -lijk";
+  if(w.length>3 && /(je|tje|pje|kje)$/.test(w)) return "Verkleinwoorden";
+  if(/^ch|eau|qu|x|y|c(?!h)|ine$|[ao]ge$/.test(w)) return "Leenwoorden";
+  if(/aai|ooi|oei/.test(w)) return "aai / ooi / oei";
+  if(/eer|oor|eur/.test(w)) return "eer / oor / eur";
+  if(/au|ou/.test(w)) return "au / ou";
+  if(/ei|ij/.test(w)) return "ei / ij";
+  if(/ng|nk/.test(w)) return "-ng / -nk";
+  if(w.length>=10) return "Lange woorden / samenstellingen";
+  if(/sch|str|spr|spl|cht|[bdfgkpt][lr]|[^aeiou]{3}/.test(w)) return "Medeklinkerclusters";
+  return "Klankzuivere woorden";
+}
+
+/* Lastige woorden (pool): terug tot 3 keer op rij goed */
+function actievePool(){ return Object.keys(O.pool).filter(w=>O.pool[w].status==='oefenen')
+  .sort((a,b)=>O.pool[b].fout-O.pool[a].fout || a.localeCompare(b)); }
+function markeer(w,goed){
+  let p=O.pool[w];
+  if(!goed){
+    if(!p) p=O.pool[w]={fout:0, goedOpRij:0, status:'oefenen', laatst:'', toegevoegd:vandaag()};
+    p.fout++; p.goedOpRij=0; p.status='oefenen'; p.laatst=vandaag();
+  } else if(p && p.status==='oefenen'){
+    p.goedOpRij++; p.laatst=vandaag();
+    if(p.goedOpRij>=3){ p.status='beheerst'; if(S) S.beheerst.push(w); }
+  }
+}
+function bronWoorden(naam){ return (NIVEAUS[naam]||CATEGORIEEN[naam]||[]).slice(); }
+function maakSessieLijst(voorkeur){
+  const I=O.instellingen, n=+I.aantal, maxLen=+I.maxLen, uit=[];
+  const zet=w=>{ if(uit.length<n && w && !uit.includes(w)) uit.push(w); };
+  (voorkeur||[]).forEach(zet);
+  actievePool().slice(0, I.bron==='__pool__'?n:Math.ceil(n/2)).forEach(zet);
+  husselArr(bronWoorden(I.bron).filter(w=>w.length<=maxLen)).forEach(zet);
+  return husselArr(uit);
+}
+
+/* Sessie */
+let S=null, prepAanwezig=null, sesKlokTimer=null, flitsTO=null, sesRaceTimer=null, sesRaceSec=60;
+function renderPrep(){
+  const I=O.instellingen;
+  if(!prepAanwezig) prepAanwezig=new Set(O.codes);
+  [...prepAanwezig].forEach(c=>{ if(!O.codes.includes(c)) prepAanwezig.delete(c); });
+  $('prepCodes').innerHTML=O.codes.length
+    ? O.codes.map(c=>'<button class="chip'+(prepAanwezig.has(c)?' aan':'')+'" data-code="'+esc(c)+'"><span class="bol"></span> '+esc(c)+'</button>').join('')
+    : '<span class="klein-tekst">Nog geen codes. Voeg ze toe bij <b>Metingen</b> (bijvoorbeeld A, B, C).</span>';
+  const b=$('prepBron');
+  if(!b.options.length){
+    b.innerHTML='<optgroup label="Lastige woorden"><option value="__pool__">🔁 Alleen lastige woorden</option></optgroup>'+
+      '<optgroup label="AVI-niveaus">'+Object.keys(NIVEAUS).map(k=>'<option>'+esc(k)+'</option>').join('')+'</optgroup>'+
+      '<optgroup label="Leescategorieën">'+Object.keys(CATEGORIEEN).map(k=>'<option>'+esc(k)+'</option>').join('')+'</optgroup>';
+  }
+  b.value=I.bron; if(b.value!==I.bron) b.value="AVI E4 · groep 4";
+  $('prepLen').value=String(I.maxLen); $('prepAantal').value=String(I.aantal);
+  $('prepDuur').value=I.flitsduur; $('prepDuurVal').textContent=I.flitsduur+' ms';
+  const t=$('prepTekst');
+  if(!t.options.length) t.innerHTML=Object.keys(ZINNEN).map(k=>'<option>'+esc(k)+'</option>').join('')+'<option value="__eigen__">✏️ Eigen tekst</option>';
+  t.value=I.tekst; if(t.value!==I.tekst) t.value="Zinnen · groep 4";
+  $('prepEigenTekst').style.display=t.value==='__eigen__'?'block':'none';
+  $('prepEigenTekst').value=I.eigenTekst||'';
+  $('weekstatus').innerHTML=weekStatusHtml();
+}
+function leesPrep(){ const I=O.instellingen;
+  I.bron=$('prepBron').value; I.maxLen=+$('prepLen').value; I.aantal=+$('prepAantal').value; I.flitsduur=+$('prepDuur').value;
+  I.tekst=$('prepTekst').value; I.eigenTekst=$('prepEigenTekst').value; bewaarO(); }
+function weekStatusHtml(){
+  const I=O.instellingen, m=maandag(vandaag()), van=isoVan(m), zo=new Date(m); zo.setDate(zo.getDate()+6); const tot=isoVan(zo);
+  const s=O.sessies.filter(x=>x.datum>=van && x.datum<=tot), min=s.reduce((a,x)=>a+x.minuten,0);
+  return '<b>Deze week (week '+weekNr(m)+'):</b> '+s.length+' van '+I.doelSes+' sessies, '+min+' van '+(I.doelSes*I.doelMin)+' minuten. '+
+    '<span class="klein-tekst">Doel: '+I.doelSes+' keer per week '+I.doelMin+' minuten. Aanpassen kan bij Logboek.</span>';
+}
+function startSessie(){
+  leesPrep();
+  const woorden=maakSessieLijst();
+  if(!woorden.length){ alert('Er zijn geen woorden om te flitsen. Kies een andere woordenlijst, een grotere woordlengte of voeg lastige woorden toe.'); return; }
+  const nu=Date.now();
+  S={start:nu, stap:2, stapStart:nu, flitsMs:0, herhaalMs:0, woorden, idx:0, ronde:1, oordelen:[], beheerst:[],
+     rondes:[false,false,false,false], scores:{}, aanwezig:[...prepAanwezig], bron:O.instellingen.bron,
+     tekst:O.instellingen.tekst, flitsduur:+O.instellingen.flitsduur, poolSnap:JSON.stringify(O.pool)};
+  clearInterval(sesKlokTimer); sesKlokTimer=setInterval(updateKlok,1000);
+  renderSessie(); toonFlits();
+}
+function updateKlok(){ $('sesKlok').textContent = S ? 'Sessie '+mmss(Date.now()-S.start)+((S.stap===2||S.stap===3)?' · deze stap '+mmss(Date.now()-S.stapStart):'') : ''; }
+function naarStap(n){
+  if(!S) return; const nu=Date.now();
+  if(S.stap===2) S.flitsMs+=nu-S.stapStart; if(S.stap===3) S.herhaalMs+=nu-S.stapStart;
+  S.stap=n; S.stapStart=nu; clearTimeout(flitsTO); sesRaceStop(true);
+  renderSessie(); if(n===2) toonFlits(); if(n===4) vulAfronden();
+}
+function toonFlits(){
+  if(!S||S.stap!==2) return;
+  $('sesRondeKlaar').classList.remove('aan');
+  if(S.idx>=S.woorden.length){ rondeKlaar(); return; }
+  const el=$('sesWoord'); el.classList.remove('weg'); el.textContent=vorm(S.woorden[S.idx]);
+  $('sesVoortgang').textContent='Ronde '+S.ronde+' · '+(S.idx+1)+' / '+S.woorden.length;
+  clearTimeout(flitsTO); flitsTO=setTimeout(()=>{ el.textContent='• • •'; el.classList.add('weg'); }, S.flitsduur);
+}
+function oordeel(goed){
+  if(!S||S.stap!==2||S.idx>=S.woorden.length) return;
+  const w=S.woorden[S.idx]; S.oordelen.push({w, goed, ronde:S.ronde}); markeer(w,goed); bewaarO();
+  S.idx++; clearTimeout(flitsTO); $('sesWoord').textContent=''; setTimeout(toonFlits, 300);
+}
+function rondeKlaar(){
+  const r=S.oordelen.filter(o=>o.ronde===S.ronde), g=r.filter(o=>o.goed).length, pct=r.length?Math.round(g/r.length*100):0;
+  $('sesRondeTitel').textContent='Ronde '+S.ronde+' klaar';
+  $('sesRondeSub').textContent=g+' van de '+r.length+' woorden goed ('+pct+'%).'+(pct>=90&&S.flitsduur>200?' Bijna alles goed: kies de volgende keer een kortere flitsduur.':'');
+  $('sesRondeKlaar').classList.add('aan');
+}
+function nogEenRonde(){
+  const lastig=[...new Set(S.oordelen.filter(o=>o.ronde===S.ronde && !o.goed).map(o=>o.w))];
+  S.ronde++; S.woorden=maakSessieLijst(lastig); S.idx=0; toonFlits();
+}
+function tekstVoorSessie(){ return S.tekst==='__eigen__' ? (O.instellingen.eigenTekst||'') : (ZINNEN[S.tekst]||[]).join(' '); }
+function renderHerhaal(){
+  $('sesTekst').textContent=tekstVoorSessie()||'Geen tekst gekozen. Ga terug naar Voorbereiden of lees uit het eigen leesboek.';
+  $('sesRondes').innerHTML=S.rondes.map((k,i)=>'<button class="chip'+(k?' aan':'')+'" data-r="'+i+'"><span class="bol"></span> Ronde '+(i+1)+'</button>').join('');
+  if(!S.aanwezig.length){ $('sesScores').innerHTML=''; return; }
+  let h='<h3 class="pkop">Woorden goed gelezen in 1 minuut (optioneel)</h3><div class="tabwrap"><table class="tab"><tr><th>Code</th><th>Ronde 1</th><th>Ronde 2</th><th>Ronde 3</th><th>Ronde 4</th></tr>';
+  S.aanwezig.forEach(c=>{ h+='<tr><td><b>'+esc(c)+'</b></td>'+[0,1,2,3].map(r=>{
+    const v=S.scores[c]&&S.scores[c][r]; return '<td><input type="number" min="0" max="400" class="klein" data-code="'+esc(c)+'" data-r="'+r+'" value="'+(leeg(v)?'':v)+'"></td>'; }).join('')+'</tr>'; });
+  $('sesScores').innerHTML=h+'</table></div>';
+}
+function sesRaceStart(){
+  if(sesRaceTimer){ sesRaceStop(false); return; }
+  if(sesRaceSec<=0) sesRaceSec=60;
+  sesRaceTimer=setInterval(()=>{ sesRaceSec--; $('sesTijd').textContent=mmss(sesRaceSec*1000); $('sesTijd').classList.toggle('rood', sesRaceSec<=10);
+    if(sesRaceSec<=0){ sesRaceStop(false); $('sesTijd').textContent='Tijd!'; } },1000);
+  $('sesTimer').textContent='⏸ Pauze';
+}
+function sesRaceStop(reset){ if(sesRaceTimer){ clearInterval(sesRaceTimer); sesRaceTimer=null; } $('sesTimer').textContent='▶ 1 minuut';
+  if(reset){ sesRaceSec=60; $('sesTijd').textContent='1:00'; $('sesTijd').classList.remove('rood'); } }
+function vulAfronden(){
+  const n=S.oordelen.length, g=S.oordelen.filter(o=>o.goed).length, tot=Date.now()-S.start;
+  const lastig=new Set(S.oordelen.filter(o=>!o.goed).map(o=>o.w)).size;
+  $('sesSamenvatting').innerHTML=stat(mmss(tot),'Totale duur')+stat(nlGetal(afr(S.flitsMs/60000)),'Min. flitsen')+
+    stat(nlGetal(afr(S.herhaalMs/60000)),'Min. herhaald lezen')+stat(n,'Woorden geflitst')+stat((n?Math.round(g/n*100):0)+'%','Goed gelezen')+
+    stat(lastig,'Lastige woorden')+stat(S.beheerst.length,'Nu beheerst')+stat(S.rondes.filter(Boolean).length,'Rondes herhaald lezen');
+  $('sesDatum').value=vandaag(); $('sesMin').value=Math.max(1,Math.round(tot/60000)); $('sesNotitie').value='';
+}
+function slaSessieOp(){
+  const n=S.oordelen.length, g=S.oordelen.filter(o=>o.goed).length;
+  const min=Math.max(1, Math.min(180, parseInt($('sesMin').value,10)||1));
+  const scores={}; Object.keys(S.scores).forEach(c=>{ const a=[0,1,2,3].map(r=>leeg(S.scores[c][r])?null:+S.scores[c][r]); if(a.some(v=>v!=null)) scores[c]=a; });
+  O.sessies.push({id:Date.now(), datum:$('sesDatum').value||vandaag(), minuten:min, flitsMin:afr(S.flitsMs/60000), herhaalMin:afr(S.herhaalMs/60000),
+    bron:S.bron, tekst:S.tekst, flitsduur:S.flitsduur, geflitst:n, goed:g,
+    lastig:[...new Set(S.oordelen.filter(o=>!o.goed).map(o=>o.w))], beheerst:S.beheerst.slice(),
+    rondes:S.rondes.filter(Boolean).length, scores, aanwezig:S.aanwezig.slice(), door:$('sesDoor').value, notitie:$('sesNotitie').value.trim()});
+  O.sessies.sort((a,b)=>a.datum<b.datum?-1:a.datum>b.datum?1:a.id-b.id);
+  bewaarO(); stopSessieTimers(); S=null; renderSessie(); zetSub('logboek');
+}
+function annuleerSessie(){
+  if(!S) return;
+  if(!confirm('Stoppen zonder op te slaan? De markeringen van deze sessie worden teruggedraaid.')) return;
+  O.pool=JSON.parse(S.poolSnap); bewaarO(); stopSessieTimers(); S=null; renderSessie();
+}
+function stopSessieTimers(){ clearInterval(sesKlokTimer); sesKlokTimer=null; clearTimeout(flitsTO); sesRaceStop(true); }
+function renderSessie(){
+  const stap=S?S.stap:1;
+  ['st1','st2','st3','st4'].forEach((id,i)=>{ $(id).classList.toggle('aan', stap===i+1); $(id).classList.toggle('gedaan', stap>i+1); });
+  $('sesPrep').style.display=stap===1?'block':'none'; $('sesFlits').style.display=stap===2?'block':'none';
+  $('sesHerhaal').style.display=stap===3?'block':'none'; $('sesAfrond').style.display=stap===4?'block':'none';
+  if(stap===1) renderPrep(); if(stap===3) renderHerhaal(); updateKlok();
+}
+
+/* Lastige woorden */
+function renderPool(){
+  const toonB=$('poolToonBeheerst').checked;
+  const ws=Object.keys(O.pool).filter(w=>toonB||O.pool[w].status==='oefenen').sort((a,b)=>{
+    const pa=O.pool[a], pb=O.pool[b]; if(pa.status!==pb.status) return pa.status==='oefenen'?-1:1; return pb.fout-pa.fout||a.localeCompare(b); });
+  $('poolTabel').innerHTML='<tr><th>Woord</th><th>Categorie</th><th>Keer lastig</th><th>Goed op rij</th><th>Status</th><th>Laatst</th><th></th></tr>'+
+    (ws.length ? ws.map(w=>{ const p=O.pool[w]; return '<tr><td><b>'+esc(w)+'</b></td><td>'+esc(categorie(w))+'</td><td>'+p.fout+'</td><td>'+p.goedOpRij+' / 3</td><td>'+
+      (p.status==='oefenen'?'🔁 oefenen':'✅ beheerst')+'</td><td>'+nlDatum(p.laatst)+'</td><td><button class="mini" title="Verwijderen" data-del="'+esc(w)+'">✕</button></td></tr>'; }).join('')
+      : '<tr><td colspan="7" class="klein-tekst">Nog geen lastige woorden.</td></tr>');
+  const tel={}; Object.keys(O.pool).forEach(w=>{ const p=O.pool[w]; if(p.fout>0){ const c=categorie(w); tel[c]=tel[c]||{woorden:0,keer:0}; tel[c].woorden++; tel[c].keer+=p.fout; } });
+  const cats=Object.keys(tel).sort((a,b)=>tel[b].keer-tel[a].keer), max=cats.length?tel[cats[0]].keer:1;
+  $('poolCats').innerHTML=cats.length ? cats.map(c=>'<div class="catrij"><span class="catnaam">'+esc(c)+'</span><span class="catbalk"><span style="width:'+
+    Math.round(tel[c].keer/max*100)+'%"></span></span><span class="catgetal">'+tel[c].keer+'× lastig · '+tel[c].woorden+' woord'+(tel[c].woorden===1?'':'en')+'</span></div>').join('')
+    : '<p class="klein-tekst">Nog geen gegevens.</p>';
+}
+function voegPoolToe(){
+  const ws=$('poolInvoer').value.split(/[\s,;]+/).map(s=>s.trim().toLowerCase()).filter(Boolean);
+  ws.forEach(w=>{ if(!O.pool[w]) O.pool[w]={fout:1, goedOpRij:0, status:'oefenen', laatst:vandaag(), toegevoegd:vandaag(), handmatig:true};
+    else { O.pool[w].status='oefenen'; O.pool[w].goedOpRij=0; } });
+  $('poolInvoer').value=''; bewaarO(); renderPool();
+}
+
+/* Logboek */
+function weekLijst(){
+  const I=O.instellingen; let van=I.periodeStart, tot=I.periodeEind;
+  if(O.sessies.length){ const f=O.sessies[0].datum, l=O.sessies[O.sessies.length-1].datum; if(!van||f<van) van=f; if(!tot||l>tot) tot=l; }
+  if(!van||!tot||van>tot) return [];
+  const uit=[], eind=maandag(tot); let m=maandag(van), guard=0;
+  while(m<=eind && guard++<60){
+    const mi=isoVan(m), zo=new Date(m); zo.setDate(zo.getDate()+6); const zi=isoVan(zo);
+    const s=O.sessies.filter(x=>x.datum>=mi && x.datum<=zi);
+    const inPeriode=!!(I.periodeStart&&I.periodeEind&&zi>=I.periodeStart&&mi<=I.periodeEind);
+    uit.push({nr:weekNr(m), label:'Week '+weekNr(m)+' (vanaf '+nlDatum(mi)+')'+(inPeriode?'':', buiten de periode'), min:s.reduce((a,x)=>a+x.minuten,0), n:s.length, inPeriode});
+    m.setDate(m.getDate()+7);
+  }
+  return uit;
+}
+function renderLog(){
+  const I=O.instellingen, ses=O.sessies;
+  $('logDoelSes').value=I.doelSes; $('logDoelMin').value=I.doelMin; $('logStart').value=I.periodeStart; $('logEind').value=I.periodeEind;
+  const tot=ses.reduce((a,x)=>a+x.minuten,0), geflitst=ses.reduce((a,x)=>a+x.geflitst,0), goed=ses.reduce((a,x)=>a+x.goed,0);
+  const weken=weekLijst(), doel=I.doelSes*I.doelMin, periode=weken.filter(w=>w.inPeriode), gehaald=periode.filter(w=>w.min>=doel).length;
+  $('logStats').innerHTML=stat(ses.length,'Sessies')+stat(Math.floor(tot/60)+'u '+(tot%60)+'m','Totale oefentijd')+
+    stat(ses.length?Math.round(tot/ses.length):0,'Gem. min per sessie')+stat(gehaald+' / '+periode.length,'Weken doel gehaald')+
+    stat(geflitst?Math.round(goed/geflitst*100)+'%':'-','Goed geflitst')+stat(Object.values(O.pool).filter(p=>p.status==='beheerst').length,'Woorden beheerst');
+  const max=Math.max(doel*1.4, ...weken.map(w=>w.min), 1);
+  $('logWeken').innerHTML=weken.length
+    ? '<div class="weken"><div class="doellijn" style="bottom:'+(doel/max*100)+'%"><span>doel '+doel+' min</span></div>'+
+      weken.map(w=>'<div class="week'+(w.inPeriode?'':' buiten')+'" title="'+esc(w.label+': '+w.min+' min, '+w.n+' sessies')+'"><div class="bar'+(w.min>=doel?' gehaald':'')+'" style="height:'+(w.min/max*100)+'%"></div><small>wk '+w.nr+'</small></div>').join('')+'</div>'
+    : '<p class="klein-tekst">Stel hierboven een periode in.</p>';
+  if(weken.length) $('logWeken').innerHTML+='<p class="klein-tekst" style="margin-top:6px;">Groen = doel gehaald · paars = onder het doel · grijs = buiten je onderzoeksperiode (telt niet mee).</p>';
+  $('logTabel').innerHTML='<tr><th>Datum</th><th>Min.</th><th>Flitsen</th><th>Herh. lezen</th><th>Geflitst</th><th>Goed</th><th>Rondes</th><th>Aanwezig</th><th>Door</th><th>Notitie</th><th></th></tr>'+
+    (ses.length ? ses.map(x=>'<tr><td>'+nlDatum(x.datum)+'</td><td>'+x.minuten+'</td><td>'+nlGetal(x.flitsMin)+'</td><td>'+nlGetal(x.herhaalMin)+'</td><td>'+x.geflitst+'</td><td>'+
+      (x.geflitst?Math.round(x.goed/x.geflitst*100)+'%':'-')+'</td><td>'+x.rondes+'</td><td>'+esc((x.aanwezig||[]).join(', '))+'</td><td>'+esc(x.door)+'</td><td>'+esc(x.notitie)+
+      '</td><td><button class="mini" title="Verwijderen" data-sesdel="'+x.id+'">✕</button></td></tr>').join('')
+      : '<tr><td colspan="11" class="klein-tekst">Nog geen sessies. Start er een bij <b>Sessie</b>.</td></tr>');
+}
+function download(naam, inhoud, type){
+  const a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([inhoud],{type})); a.download=naam;
+  document.body.appendChild(a); a.click(); setTimeout(()=>{ URL.revokeObjectURL(a.href); a.remove(); },800);
+}
+const csvCel=v=>{ const s=String(v==null?'':v); return /[;"\n\r]/.test(s)?'"'+s.replace(/"/g,'""')+'"':s; };
+const csv=rijen=>'﻿'+rijen.map(r=>r.map(csvCel).join(';')).join('\r\n');
+function csvSessies(){
+  const r=[['datum','week','minuten','flitsen_min','herhaald_lezen_min','woordenlijst','flitsduur_ms','woorden_geflitst','goed','percentage_goed','lastige_woorden','beheerst','rondes_herhaald_lezen','aantal_aanwezig','codes_aanwezig','uitgevoerd_door','notitie']];
+  O.sessies.forEach(x=>r.push([nlDatum(x.datum), weekNr(new Date(x.datum+'T12:00:00')), x.minuten, nlGetal(x.flitsMin), nlGetal(x.herhaalMin), x.bron==='__pool__'?'lastige woorden':x.bron,
+    x.flitsduur, x.geflitst, x.goed, x.geflitst?Math.round(x.goed/x.geflitst*100):'', (x.lastig||[]).join(' '), (x.beheerst||[]).join(' '), x.rondes,
+    (x.aanwezig||[]).length, (x.aanwezig||[]).join(' '), x.door, x.notitie]));
+  download('logboek-sessies-'+vandaag()+'.csv', csv(r), 'text/csv;charset=utf-8');
+}
+function csvScores(){
+  const r=[['datum','code','ronde','woorden_in_1_minuut']];
+  O.sessies.forEach(x=>Object.keys(x.scores||{}).forEach(c=>x.scores[c].forEach((v,i)=>{ if(v!=null) r.push([nlDatum(x.datum), c, i+1, v]); })));
+  download('racelees-scores-'+vandaag()+'.csv', csv(r), 'text/csv;charset=utf-8');
+}
+function printLogboek(){
+  const I=O.instellingen, tot=O.sessies.reduce((a,x)=>a+x.minuten,0);
+  const rijen=O.sessies.map(x=>'<tr><td>'+nlDatum(x.datum)+'</td><td>'+x.minuten+'</td><td>'+nlGetal(x.flitsMin)+'</td><td>'+nlGetal(x.herhaalMin)+'</td><td>'+x.geflitst+'</td><td>'+
+    (x.geflitst?Math.round(x.goed/x.geflitst*100)+'%':'-')+'</td><td>'+x.rondes+'</td><td>'+esc((x.aanwezig||[]).join(', '))+'</td><td>'+esc(x.door)+'</td><td>'+esc(x.notitie)+'</td></tr>').join('');
+  $('kaartprint').innerHTML='<div class="logprint"><h2>Oefenlogboek: flitsen en herhaald lezen</h2><div class="instr">Periode '+nlDatum(I.periodeStart)+' t/m '+nlDatum(I.periodeEind)+
+    ' · doel: '+I.doelSes+' keer per week '+I.doelMin+' minuten · '+O.sessies.length+(O.sessies.length===1?' sessie':' sessies')+', totaal '+tot+(tot===1?' minuut':' minuten')+'</div>'+
+    '<table><tr><th>Datum</th><th>Min.</th><th>Flitsen</th><th>Herh. lezen</th><th>Geflitst</th><th>Goed</th><th>Rondes</th><th>Aanwezig</th><th>Door</th><th>Notitie</th></tr>'+rijen+'</table>'+
+    '<div class="valid">Gezien en voor waar verklaard door:<br>Naam: ____________________________ &nbsp; Functie: ____________________________<br>'+
+    'Datum: ______________ &nbsp; Handtekening: ____________________________ &nbsp; E-mail of telefoon: ______________________</div></div>';
+  window.print();
+}
+function maakBackup(){ download('leesflitser-onderzoek-backup-'+vandaag()+'.json', JSON.stringify(O,null,1), 'application/json'); }
+function zetBackupTerug(bestand){
+  const r=new FileReader();
+  r.onload=()=>{ try{ const s=JSON.parse(r.result);
+      if(!s || s.versie!==1 || !Array.isArray(s.sessies)) throw new Error('geen geldige back-up');
+      if(!confirm('Back-up terugzetten? De huidige gegevens in deze browser worden vervangen.')) return;
+      O=normaliseerO(s); bewaarO(); prepAanwezig=null; renderOnderzoek(); alert('Back-up teruggezet.');
+    }catch(e){ alert('Dit bestand kan ik niet lezen als back-up van de Leesflitser.'); } };
+  r.readAsText(bestand);
+}
+
+/* Metingen */
+function groei(c){ const m=O.metingen[c]; if(!m||leeg(m.dmtVoor)||leeg(m.dmtNa)) return null; return afr(+m.dmtNa - +m.dmtVoor); }
+function verwacht(c){ const m=O.metingen[c]||{}, v=!leeg(m.verwacht)?m.verwacht:O.instellingen.normGroei; return leeg(v)?null:+v; }
+function renderMet(){
+  const I=O.instellingen;
+  $('normGroei').value=I.normGroei; $('normDatum').value=I.normDatum; $('normMet').value=I.normMet;
+  $('codeLijst').innerHTML=O.codes.map(c=>'<span class="chip aan">'+esc(c)+' <button class="mini wit" title="Code verwijderen" data-codedel="'+esc(c)+'">✕</button></span>').join('');
+  const rij=c=>{
+    const m=O.metingen[c]||{};
+    const inp=(k,type,extra)=>'<input type="'+type+'" data-met="'+esc(c)+'" data-k="'+k+'" value="'+esc(leeg(m[k])?'':m[k])+'" '+(extra||'')+'>';
+    const kies=(k,def)=>'<select data-met="'+esc(c)+'" data-k="'+k+'">'+['A','B'].map(v=>'<option'+((m[k]||def)===v?' selected':'')+'>'+v+'</option>').join('')+'</select>';
+    const g=groei(c), v=verwacht(c);
+    return '<tr><td><b>'+esc(c)+'</b></td><td>'+inp('dmtVoor','number','class="klein"')+'</td><td>'+kies('versieVoor','A')+'</td><td>'+inp('datumVoor','date')+'</td>'+
+      '<td>'+inp('dmtNa','number','class="klein"')+'</td><td>'+kies('versieNa','B')+'</td><td>'+inp('datumNa','date')+'</td>'+
+      '<td>'+(g==null?'-':'<b>'+nlGetal(g)+'</b>')+'</td><td>'+inp('verwacht','number','class="klein" step="0.1" placeholder="'+esc(I.normGroei)+'"')+'</td>'+
+      '<td>'+(g==null||v==null?'-':(g>v?'✅ ja':'❌ nee'))+'</td><td>'+inp('aviVoor','text','class="klein"')+'</td><td>'+inp('aviNa','text','class="klein"')+'</td></tr>';
+  };
+  $('metTabel').innerHTML='<tr><th>Code</th><th>DMT voor</th><th>Versie</th><th>Datum</th><th>DMT na</th><th>Versie</th><th>Datum</th><th>Groei</th><th>Verwacht</th><th>Meer dan verwacht?</th><th>AVI voor</th><th>AVI na</th></tr>'+
+    (O.codes.length ? O.codes.map(rij).join('') : '<tr><td colspan="12" class="klein-tekst">Voeg eerst leerlingcodes toe.</td></tr>');
+  const w=[];
+  if(leeg(I.normGroei)||!I.normDatum) w.push('Leg de verwachte groei vast vóór de nameting, met datum. Zo is duidelijk dat je de norm niet achteraf hebt gekozen.');
+  O.codes.forEach(c=>{ const m=O.metingen[c]||{};
+    if(!leeg(m.dmtVoor)&&!leeg(m.dmtNa)&&(m.versieVoor||'A')===(m.versieNa||'B')) w.push('Code '+c+': voor- en nameting met dezelfde DMT-versie. Gebruik bij de nameting de andere versie.');
+    if(I.normDatum&&m.datumNa&&I.normDatum>m.datumNa) w.push('Code '+c+': de norm is vastgelegd ná de nameting.'); });
+  $('metWaarsch').innerHTML=w.map(x=>'<div class="let">⚠️ '+esc(x)+'</div>').join('');
+  const met=O.codes.filter(c=>groei(c)!=null), meer=met.filter(c=>verwacht(c)!=null&&groei(c)>verwacht(c));
+  const gem=met.length?afr(met.reduce((a,c)=>a+groei(c),0)/met.length):null;
+  $('metSamenvatting').innerHTML=met.length
+    ? '<b>'+meer.length+' van de '+met.length+'</b> leerlingen '+(meer.length===1?'groeide':'groeiden')+' meer dan verwacht. Gemiddelde groei: <b>'+nlGetal(gem)+'</b>'+(leeg(I.normGroei)?'':' (verwacht: '+nlGetal(I.normGroei)+')')+'.<br>'+
+      '<span class="klein-tekst">Let op: kleine groep en geen controlegroep. Groei kan ook komen door de gewone lessen of doordat kinderen ouder worden. Trek dus voorzichtige conclusies en combineer dit met je logboek, observaties en de feedback van collega\'s.</span>'
+    : '<span class="klein-tekst">Nog geen voor- én nameting ingevuld.</span>';
+}
+function csvMetingen(){
+  const r=[['code','dmt_voor','versie_voor','datum_voor','dmt_na','versie_na','datum_na','groei','verwachte_groei','meer_dan_verwacht','avi_voor','avi_na']];
+  O.codes.forEach(c=>{ const m=O.metingen[c]||{}, g=groei(c), v=verwacht(c);
+    r.push([c, nlGetal(m.dmtVoor), m.versieVoor||'A', nlDatum(m.datumVoor), nlGetal(m.dmtNa), m.versieNa||'B', nlDatum(m.datumNa), nlGetal(g), nlGetal(v), (g==null||v==null)?'':(g>v?'ja':'nee'), m.aviVoor||'', m.aviNa||'']); });
+  download('metingen-'+vandaag()+'.csv', csv(r), 'text/csv;charset=utf-8');
+}
+function voegCodeToe(){
+  const c=$('codeInvoer').value.trim().toUpperCase();
+  if(!/^[A-Z]{1,2}[0-9]{0,2}$/.test(c)){ alert('Gebruik een code van 1 of 2 letters, eventueel met cijfers erachter. Geen naam. Bijvoorbeeld: A, B, L3.'); return; }
+  if(O.codes.includes(c)){ alert('Deze code bestaat al.'); return; }
+  O.codes.push(c); if(prepAanwezig) prepAanwezig.add(c); $('codeInvoer').value=''; bewaarO(); renderMet();
+}
+
+/* Weergave */
+function zetSub(s){ sub=s; [...document.querySelectorAll('#subtabs button')].forEach(b=>b.classList.toggle('aan', b.dataset.sub===s));
+  ['sessie','woorden','logboek','metingen','waarom'].forEach(k=>$('sub-'+k).style.display=k===s?'block':'none'); renderOnderzoek(); }
+function renderOnderzoek(){ if(sub==='sessie') renderSessie(); else if(sub==='woorden') renderPool(); else if(sub==='logboek') renderLog(); else if(sub==='metingen') renderMet(); }
+function zetView(v){
+  view=v; $('tabOefenen').classList.toggle('aan', v==='oefenen'); $('tabOnderzoek').classList.toggle('aan', v==='onderzoek');
+  $('oefenview').style.display=v==='oefenen'?'block':'none'; $('onderzoekview').style.display=v==='onderzoek'?'block':'none';
+  if(v==='onderzoek'){ stop(); raceStop(true); renderOnderzoek(); }
+  try{ localStorage.setItem('leesflitser-view', v); }catch(e){}
+}
+
+/* Events onderzoek */
+$('tabOefenen').addEventListener('click', ()=>zetView('oefenen'));
+$('tabOnderzoek').addEventListener('click', ()=>zetView('onderzoek'));
+$('subtabs').addEventListener('click', e=>{ const b=e.target.closest('button[data-sub]'); if(b) zetSub(b.dataset.sub); });
+$('prepCodes').addEventListener('click', e=>{ const b=e.target.closest('button[data-code]'); if(!b) return; const c=b.dataset.code;
+  if(prepAanwezig.has(c)) prepAanwezig.delete(c); else prepAanwezig.add(c); b.classList.toggle('aan'); });
+['prepBron','prepLen','prepAantal'].forEach(id=>$(id).addEventListener('change', leesPrep));
+$('prepDuur').addEventListener('input', ()=>{ $('prepDuurVal').textContent=$('prepDuur').value+' ms'; });
+$('prepDuur').addEventListener('change', leesPrep);
+$('prepTekst').addEventListener('change', ()=>{ $('prepEigenTekst').style.display=$('prepTekst').value==='__eigen__'?'block':'none'; leesPrep(); });
+$('prepEigenTekst').addEventListener('change', leesPrep);
+$('sesStart').addEventListener('click', startSessie);
+$('sesGoed').addEventListener('click', ()=>oordeel(true));
+$('sesLastig').addEventListener('click', ()=>oordeel(false));
+$('sesNogEens').addEventListener('click', toonFlits);
+$('sesNogRonde').addEventListener('click', nogEenRonde);
+$('sesNaarHerhaal').addEventListener('click', ()=>naarStap(3));
+$('sesNaarHerhaal2').addEventListener('click', ()=>naarStap(3));
+$('sesTerugFlits').addEventListener('click', ()=>naarStap(2));
+$('sesNaarAfrond').addEventListener('click', ()=>naarStap(4));
+$('sesTerugHerhaal').addEventListener('click', ()=>naarStap(3));
+$('sesAnnuleer').addEventListener('click', annuleerSessie);
+$('sesAnnuleer2').addEventListener('click', annuleerSessie);
+$('sesOpslaan').addEventListener('click', slaSessieOp);
+$('sesTimer').addEventListener('click', sesRaceStart);
+$('sesRondes').addEventListener('click', e=>{ const b=e.target.closest('button[data-r]'); if(!b||!S) return; const i=+b.dataset.r; S.rondes[i]=!S.rondes[i]; b.classList.toggle('aan', S.rondes[i]); });
+$('sesScores').addEventListener('input', e=>{ const t=e.target; if(!S||!t.dataset.code) return;
+  S.scores[t.dataset.code]=S.scores[t.dataset.code]||[null,null,null,null]; S.scores[t.dataset.code][+t.dataset.r]=t.value; });
+document.addEventListener('keydown', e=>{
+  if(view!=='onderzoek'||!S||S.stap!==2) return;
+  if(e.target.matches && e.target.matches('input,textarea,select')) return;
+  if(e.code==='ArrowRight'){ e.preventDefault(); oordeel(true); }
+  else if(e.code==='ArrowLeft'){ e.preventDefault(); oordeel(false); }
+  else if(e.code==='Space'){ e.preventDefault(); if($('sesRondeKlaar').classList.contains('aan')) return; toonFlits(); }
+});
+window.addEventListener('beforeunload', e=>{ if(S){ e.preventDefault(); e.returnValue=''; } });
+
+$('poolToevoegen').addEventListener('click', voegPoolToe);
+$('poolInvoer').addEventListener('keydown', e=>{ if(e.key==='Enter') voegPoolToe(); });
+$('poolToonBeheerst').addEventListener('change', renderPool);
+$('poolTabel').addEventListener('click', e=>{ const b=e.target.closest('button[data-del]'); if(!b) return; delete O.pool[b.dataset.del]; bewaarO(); renderPool(); });
+$('poolLeeg').addEventListener('click', ()=>{ if(confirm('Alle lastige woorden verwijderen? Dit kan niet ongedaan worden gemaakt.')){ O.pool={}; bewaarO(); renderPool(); } });
+$('poolPrint').addEventListener('click', ()=>{
+  const items=actievePool(); if(!items.length){ alert('Er zijn geen lastige woorden om te printen.'); return; }
+  const rijen=items.map((w,i)=>'<tr><td class="nr">'+(i+1)+'</td><td>'+esc(vorm(w))+'</td><td class="rondes">• • •</td></tr>').join('');
+  $('kaartprint').innerHTML='<h2>Leeskaart · lastige woorden</h2><div class="instr">Lees de woorden hardop. Doe het 3× en zet elke ronde een streepje.</div>'+
+    '<div class="naamrij">Code: <span></span> &nbsp; Datum: <span></span></div><table>'+rijen+'</table>';
+  window.print();
+});
+
+[['logDoelSes','doelSes',1,7],['logDoelMin','doelMin',5,30]].forEach(([id,k,lo,hi])=>$(id).addEventListener('change', ()=>{
+  O.instellingen[k]=Math.min(hi, Math.max(lo, parseInt($(id).value,10)||lo)); bewaarO(); renderLog(); }));
+$('logStart').addEventListener('change', ()=>{ O.instellingen.periodeStart=$('logStart').value; bewaarO(); renderLog(); });
+$('logEind').addEventListener('change', ()=>{ O.instellingen.periodeEind=$('logEind').value; bewaarO(); renderLog(); });
+$('logTabel').addEventListener('click', e=>{ const b=e.target.closest('button[data-sesdel]'); if(!b) return;
+  if(!confirm('Deze sessie uit het logboek verwijderen?')) return; O.sessies=O.sessies.filter(x=>String(x.id)!==b.dataset.sesdel); bewaarO(); renderLog(); });
+$('logCsv').addEventListener('click', csvSessies);
+$('logScoresCsv').addEventListener('click', csvScores);
+$('logPrint').addEventListener('click', printLogboek);
+$('logBackup').addEventListener('click', maakBackup);
+$('logHerstel').addEventListener('click', ()=>$('logFile').click());
+$('logFile').addEventListener('change', e=>{ if(e.target.files[0]) zetBackupTerug(e.target.files[0]); e.target.value=''; });
+
+$('codeToevoegen').addEventListener('click', voegCodeToe);
+$('codeInvoer').addEventListener('keydown', e=>{ if(e.key==='Enter') voegCodeToe(); });
+$('codeLijst').addEventListener('click', e=>{ const b=e.target.closest('button[data-codedel]'); if(!b) return; const c=b.dataset.codedel;
+  if(!confirm('Code '+c+' verwijderen? De metingen van deze code worden ook verwijderd.')) return;
+  O.codes=O.codes.filter(x=>x!==c); delete O.metingen[c]; bewaarO(); renderMet(); });
+['normGroei','normDatum','normMet'].forEach(id=>$(id).addEventListener('change', ()=>{ O.instellingen[id]=$(id).value.trim(); bewaarO(); renderMet(); }));
+$('metTabel').addEventListener('change', e=>{ const t=e.target; if(!t.dataset.met) return;
+  const m=O.metingen[t.dataset.met]=O.metingen[t.dataset.met]||{}; m[t.dataset.k]=t.value.trim(); bewaarO(); renderMet(); });
+$('metCsv').addEventListener('click', csvMetingen);
+
 /* init */
+laadO();
 herstel();
 pasWszToe();
 applyModusUI();
@@ -553,6 +1236,7 @@ $('tempoveld').style.opacity=isAuto()?1:.4;
 $('eigenvak').classList.toggle('aan', sel.value==="__eigen__");
 updatePakketUI();
 laadLijst(true);
+try{ if(localStorage.getItem('leesflitser-view')==='onderzoek') zetView('onderzoek'); }catch(e){}
 </script>
 </body>
 </html>
