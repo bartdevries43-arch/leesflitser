@@ -1212,7 +1212,10 @@ function zetView(v){
   $('oefenview').style.display=v==='oefenen'?'block':'none'; $('onderzoekview').style.display=v==='onderzoek'?'block':'none'; $('woordview').style.display=v==='woordenschat'?'block':'none';
   if(v!=='oefenen'){ stop(); raceStop(true); }
   if(v==='onderzoek') renderOnderzoek();
-  if(v==='woordenschat' && !$('woordframe').getAttribute('src')) $('woordframe').src='https://bartdevries43-arch.github.io/lesmateriaal-blink/woordenschat/';
+  if(v==='woordenschat' && !$('woordframe').getAttribute('src')){
+    const c=URLQ.get('code')||URLQ.get('klascode');   // directe link met klascode werkt ook hier
+    $('woordframe').src='https://bartdevries43-arch.github.io/lesmateriaal-blink/woordenschat/'+(c?'?code='+encodeURIComponent(c):'');
+  }
   try{ localStorage.setItem('leesflitser-view', v); }catch(e){}
 }
 
@@ -1307,6 +1310,7 @@ $('tempoveld').style.opacity=isAuto()?1:.4;
 $('eigenvak').classList.toggle('aan', sel.value==="__eigen__");
 updatePakketUI();
 laadLijst(true);
+try{ if(URLQ.get('code')||URLQ.get('klascode')){ const u=new URL(location.href); u.searchParams.delete('code'); u.searchParams.delete('klascode'); history.replaceState(null,'',u.pathname+u.search+u.hash); } }catch(e){}
 try{ const t=URLQ.get('tab'), bewaard=localStorage.getItem('leesflitser-view');
   if(t==='woordenschat'||t==='onderzoek') zetView(t);
   else if(!URLQ.get('lijst') && !URLQ.get('modus') && (bewaard==='onderzoek'||bewaard==='woordenschat')) zetView(bewaard); }catch(e){}
